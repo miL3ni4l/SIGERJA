@@ -6,21 +6,21 @@
                 $('#myModal').modal('hide');
             });
 
-            $(document).on('click', '.pilih_jabatan', function (e) {
-                document.getElementById("jabatan_judul").value = $(this).attr('data-jabatan_judul');
-                document.getElementById("jabatan_id").value = $(this).attr('data-jabatan_id');
+            $(document).on('click', '.pilih_ayah', function (e) {
+                document.getElementById("ayah_judul").value = $(this).attr('data-ayah_judul');
+                document.getElementById("ayah_id").value = $(this).attr('data-ayah_id');
                 $('#myModal2').modal('hide');
-            });
-
-            $(document).on('click', '.pilih_talenta', function (e) {
-                document.getElementById("talenta_judul").value = $(this).attr('data-talenta_judul');
-                document.getElementById("talenta_id").value = $(this).attr('data-talenta_id');
-                $('#myModal3').modal('hide');
             });
 
             $(document).on('click', '.pilih_ibu', function (e) {
                 document.getElementById("ibu_judul").value = $(this).attr('data-ibu_judul');
-                document.getElementById("sts_keluarga").value = $(this).attr('data-ibu_id');
+                document.getElementById("ibu_id").value = $(this).attr('data-ibu_id');
+                $('#myModal3').modal('hide');
+            });
+
+            $(document).on('click', '.pilih_keluarga1', function (e) {
+                document.getElementById("keluarga1_judul").value = $(this).attr('data-keluarga1_judul');
+                document.getElementById("sts_keluarga").value = $(this).attr('data-sts_keluarga');
                 $('#myModal4').modal('hide');
             });
             
@@ -51,7 +51,7 @@
                       
 
                         <div class="form-group{{ $errors->has('kode_jemaat') ? ' has-error' : '' }}">
-                            <label for="kode_jemaat" class="col-md-6 control-label">Kode Jemaat</label>
+                            <label for="kode_jemaat" class="col-md-7 control-label">Kode Jemaat</label>
                             <div class="col-md-7">
                                 <input id="kode_jemaat" type="text" class="form-control" name="kode_jemaat" value="{{ $kode }}" required readonly="">
                                 @if ($errors->has('kode_jemaat'))
@@ -62,15 +62,24 @@
                             </div>
                         </div>
 
-                            <div class="form-group{{ $errors->has('sts_jemaat') ? ' has-error' : '' }}">
-                            <label for="sts_jemaat" class="col-md-4 control-label">Status Anggota</label>
-                            <div class="col-md-7">
-                            <select class="form-control" name="sts_jemaat" required="">
-                                <option value="Jemaat">Jemaat</option>
-                                <option value="Simpatisan">Simpatisan</option>
-                            </select>
-                            </div>
+                        <div class="form-group{{ $errors->has('sts_jemaat') ? ' has-error' : '' }}">
+                              <label for="goldar" class="col-md-2 control-label">Status Anggota    </label>
+                              
+                                <label>
+                                    <input type="radio" name="sts_jemaat" value="Jemaat">
+                                    Jemaat
+                                </label>   &nbsp; &nbsp; 
+                                <label>
+                                <input type="radio" name="sts_jemaat" value="Simpatisan">
+                                    Simpatisan
+                                </label>   &nbsp; &nbsp; 
+                                <label>
+                                <input type="radio" name="sts_jemaat" value="Tamu">
+                                    Tamu
+                                </label>
                         </div>
+
+
 
                         <div class="form-group{{ $errors->has('nama') ? ' has-error' : '' }}">
                             <label for="nama" class="col-md-4 control-label">Nama Lengkap</label>
@@ -257,21 +266,75 @@
                                 </label>
                         </div>
 
-                      
-
-                        <div class="form-group{{ $errors->has('agama') ? ' has-error' : '' }}">
-                            <label for="agama" class="col-md-4 control-label">Agama Sebelumnya</label>
+                        <div class="form-group{{ $errors->has('ayah') ? ' has-error' : '' }}">
+                            <label for="ayah" class="col-md-4 control-label">Nama Ayah</label>
                             <div class="col-md-7">
-                            <select class="form-control" name="agama" required="">
-                                <option value="Kristen">Kristen</option>
-                                <option value="Katolik">Katolik</option>
-                                <option value="Islam">Islam</option>
-                                <option value="Hindu">Hindu</option>
-                                <option value="Buddha">Budha</option>
-                                <option value="KhongHuCu">Khong Hu Cu</option>
-                            </select>
+                                <div class="input-group"  >
+                                <input id="ayah_judul" type="text" class="form-control "   >
+                                <input id="ayah" type="hidden" multiple="multiple" name="ayah" value="{{ old('ayah') }}" required readonly="">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal2"><b>Cari</b> <span class="fa fa-search"></span></button>
+                                </span>
+                                </div>
+                                @if ($errors->has('ayah'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('ayah') }}</strong>
+                                    </span>
+                                @endif
+                                 
                             </div>
                         </div>
+
+                        
+                        <div class="form-group{{ $errors->has('ibu') ? ' has-error' : '' }}">
+                            <label for="ayah" class="col-md-4 control-label">Nama Ibu</label>
+                            <div class="col-md-7">
+                                <div class="input-group"  >
+                                <input id="ibu_judul" type="text" class="form-control "   >
+                                <input id="ibu" type="hidden" multiple="multiple" name="ibu" value="{{ old('ibu') }}" required readonly="">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal3"><b>Cari</b> <span class="fa fa-search"></span></button>
+                                </span>
+                                </div>
+                                @if ($errors->has('ibu'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('ibu') }}</strong>
+                                    </span>
+                                @endif
+                                 
+                            </div>
+                        </div>                      
+
+
+                           <div class="form-group{{ $errors->has('agama') ? ' has-error' : '' }}">
+                              <label for="agama" class="col-md-2 control-label">Agama Sebelumnya    :</label>
+                              
+                                <label>
+                                    <input type="radio" name="agama" value="Kristen">
+                                    Kristen
+                                </label>&nbsp; &nbsp;
+                                <label>
+                                <input type="radio" name="agama" value="Katolik">
+                                    Katolik
+                                </label>&nbsp; &nbsp;
+                                <label>
+                                <input type="radio" name="agama" value="Islam">
+                                    Islam
+                                </label>&nbsp; &nbsp;
+                                <label>
+                                <input type="radio" name="agama" value="Hindu">
+                                    Hindu
+                                </label>&nbsp; &nbsp;
+                                <label>
+                                <input type="radio" name="agama" value="Buddha">
+                                    Buddha
+                                </label>
+                                <label> &nbsp; &nbsp;
+                                <input type="radio" name="agama" value="KhongHuCu">
+                                    Khong Hu Cu
+                                </label>
+                        </div>
+
 
                         <div class="form-group{{ $errors->has('pendidikan') ? ' has-error' : '' }}">
                               <label for="pendidikan" class="col-md-2 control-label">Pendidikan    </label>
@@ -333,25 +396,7 @@
                         </div>
 
                       
-                        
-                        <div class="form-group{{ $errors->has('sts_keluarga') ? ' has-error' : '' }}">
-                            <label for="sts_keluarga" class="col-md-4 control-label">Silsilah Keluarga (Jika tidak ada isi - )</label>
-                            <div class="col-md-7">
-                                <div class="input-group" >
-                                <input id="ibu_judul" type="text" class="form-control "  >
-                                <input id="sts_keluarga" type="hidden" name="sts_keluarga" value="{{ old('sts_keluarga') }}" required readonly="">
-                                <span class="input-group-btn">
-                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal4"><b>Cari</b> <span class="fa fa-search"></span></button>
-                                </span>
-                                </div>
-                                @if ($errors->has('sts_keluarga'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('sts_keluarga') }}</strong>
-                                    </span>
-                                @endif
-                                 
-                            </div>
-                        </div>
+                  
 
               
 
@@ -381,7 +426,25 @@
                             </div>
                         </div>
 
-                        
+                              
+                        <div class="form-group{{ $errors->has('sts_keluarga') ? ' has-error' : '' }}">
+                            <label for="sts_keluarga" class="col-md-4 control-label">Silsilah Keluarga (Jika tidak ada isi - )</label>
+                            <div class="col-md-7">
+                                <div class="input-group"  >
+                                <input id="sts_keluarga" type="text" class="form-control "   >
+                                <input id="sts_keluarga" type="hidden" multiple="multiple" name="sts_keluarga" value="{{ old('sts_keluarga') }}" required readonly="">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal4"><b>Cari</b> <span class="fa fa-search"></span></button>
+                                </span>
+                                </div>
+                                @if ($errors->has('sts_keluarga'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('sts_keluarga') }}</strong>
+                                    </span>
+                                @endif
+                                 
+                            </div>
+                        </div>
 
                       
 
@@ -443,7 +506,7 @@
   <div class="modal-dialog modal-lg" role="document" >
     <div class="modal-content" style="background: #fff;">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cari Jabatan</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Cari ayah</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -452,14 +515,14 @@
                         <table id="lookup" class="table table-bordered table-hover table-striped">
                             <thead>
                                 <tr>
-                                    <th>Jabatan</th>
+                                    <th>Jemaat</th>
                                      <th>Keterangan</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($jabatans as $data)
-                        <tr class="pilih_jabatan" data-jabatan_id="<?php echo $data->id; ?>" data-jabatan_judul="<?php echo $data->nama_jabatan; ?>" >
-                                    <td>{{$data->nama_jabatan}}</td>
+                                @foreach($jemaats as $data)
+                        <tr class="pilih_ayah" data-ayah_id="<?php echo $data->id; ?>" data-ayah_judul="<?php echo $data->nama; ?>" >
+                                    <td>{{$data->nama}}</td>
                                     <td>{{$data->ket}}</td>
                                 </tr>
                                 @endforeach
@@ -475,7 +538,7 @@
   <div class="modal-dialog modal-lg" role="document" >
     <div class="modal-content" style="background: #fff;">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cari Jabatan</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Cari Ibu</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -484,14 +547,14 @@
                         <table id="lookup" class="table table-bordered table-hover table-striped">
                             <thead>
                                 <tr>
-                                    <th>Talenta</th>
+                                    <th>Jemaat</th>
                                      <th>Keterangan</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($talentas as $data)
-                        <tr class="pilih_talenta" data-talenta_id="<?php echo $data->id; ?>" data-talenta_judul="<?php echo $data->nama_talenta; ?>" >
-                                    <td>{{$data->nama_talenta}}</td>
+                                @foreach($jemaats as $data)
+                        <tr class="pilih_ibu" data-ibu_id="<?php echo $data->id; ?>" data-ibu_judul="<?php echo $data->nama; ?>" >
+                                    <td>{{$data->nama}}</td>
                                     <td>{{$data->ket}}</td>
                                 </tr>
                                 @endforeach
@@ -507,7 +570,7 @@
   <div class="modal-dialog modal-lg" role="document" >
     <div class="modal-content" style="background: #fff;">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cari Jabatan</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Cari ayah</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -522,7 +585,7 @@
                             </thead>
                             <tbody>
                                 @foreach($jemaats as $data)
-                        <tr class="pilih_ibu" data-ibu_id="<?php echo $data->id; ?>" data-ibu_judul="<?php echo $data->nama; ?>" >
+                        <tr class="pilih_keluarga1" data-sts_keluarga="<?php echo $data->id; ?>" data-keluarga1_judul="<?php echo $data->nama; ?>" >
                                     <td>{{$data->nama}}</td>
                                     <td>{{$data->sts_jemaat}}</td>
                                 </tr>

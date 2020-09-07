@@ -43,7 +43,7 @@ class TransNikahController extends Controller
         
         if(Auth::user()->level == 'user') 
         {
-            $datas = TransNikah::where('suami_id', Auth::user()->Jemaat->id) 
+            $datas = TransNikah::where('suami_id', Auth::user()->jemaat->id) 
                                 ->get();
         } else {
             $datas = TransNikah::get();
@@ -102,8 +102,8 @@ class TransNikahController extends Controller
         TransNikah::create([
                  
                 'kode' => $request->get('kode'),
-                'suami_id' => $request->get('suami_id'),
-                'istri_id' => $request->get('istri_id'),
+                // 'suami_id' => $request->get('suami_id'),
+                // 'istri_id' => $request->get('istri_id'),
                 'pdt' => $request->get('pdt'),
                 'jam' => $request->get('jam'),
                 'tempat' => $request->get('tempat'),

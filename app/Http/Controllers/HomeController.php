@@ -7,6 +7,7 @@ use App\Transaksi;
 use App\Jemaat;
 use App\Acara;
 use App\User;
+use App\TransNikah;
 // use App\Gerwil;
 use App\Talenta;
 use App\Jabatan;
@@ -52,7 +53,7 @@ class HomeController extends Controller
         $datas1 = $q->get(); 
         // $datas1 = Transaksi::sum('total_donasi');
         
-        $jemaats = Jemaat::count();
+        $jemaats = Jemaat::count(); 
         $acaras = Acara::count();
 
         $transaksis = Transaksi::sum('total_donasi');
@@ -71,6 +72,8 @@ class HomeController extends Controller
 
         $jemaat   = Jemaat::get();
 
+        $transnikah = TransNikah::get();
+
         if(Auth::user()->level == 'user')
         {
             $datas = Transaksi::where('status', 'belum')
@@ -79,7 +82,7 @@ class HomeController extends Controller
         } else {
             $datas = Transaksi::where('status', 'belum')->get();
         }
-        return view('layouts.dashboard',array('jabatan' => $jabatans, 'talenta' => $talentas, 'jemaat' => $jemaat, 'jemaats' => $jemaats, 'transaksi' => $transaksi, 'acaras' => $acaras, 'transaksis' => $transaksis, 'user' => $user,'datas' => $datas, 'transaksi1' => $transaksi1 , 'q' => $q , 'datas1' => $datas1,  'datas2' => $datas2
+        return view('layouts.dashboard',array('jabatan' => $jabatans, 'transnikah' => $transnikah, 'talenta' => $talentas, 'jemaat' => $jemaat, 'jemaats' => $jemaats, 'transaksi' => $transaksi, 'acaras' => $acaras, 'transaksis' => $transaksis, 'user' => $user,'datas' => $datas, 'transaksi1' => $transaksi1 , 'q' => $q , 'datas1' => $datas1,  'datas2' => $datas2
         ));
     
         

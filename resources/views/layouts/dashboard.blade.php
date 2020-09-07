@@ -18,6 +18,26 @@
 
 @if(Auth::user()->level == 'admin')
    
+          <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+            <div class="card card-statistics">
+                <div class="card-body">
+                  <div class="clearfix">
+                    <div class="float-left">
+                      <i class="mdi mdi-chart-line text-success icon-lg"></i>
+                    </div>
+                    <div class="float-right">
+                      <p class="mb-0 text-right">Kepala Keluarga</p>
+                      <div class="fluid-container">
+                        <h3 class="font-weight-medium text-danger mb-0">{{$transnikah->count()}}</h3>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="text-muted mt-3 mb-0">
+                    <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> Total seluruh donasi
+                  </p>
+                </div>
+              </div>
+            </div>
         
         
           <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
@@ -61,8 +81,28 @@
                 </div>
               </div>
             </div>
-           
            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+              <div class="card card-statistics">
+                <div class="card-body">
+                  <div class="clearfix">
+                    <div class="float-left">
+                      <i class="mdi mdi-account-multiple text-success icon-lg"></i>
+                    </div>
+                    <div class="float-right">
+                      <p class="mb-0 text-right">Tamu</p>
+                      <div class="fluid-container">
+                       <h3 class="font-weight-medium text-danger mb-0">{{$jemaat->where('sts_jemaat', 'Tamu')->count()}}</h3>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="text-muted mt-3 mb-0">
+                    <i class="mdi mdi-chart-arc mr-1" aria-hidden="true"></i> Total seluruh Jemaat
+                  </p>
+                </div>
+              </div>
+            </div>
+
+           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
                 <div class="card-body">
                   <div class="clearfix">
@@ -72,7 +112,7 @@
                     <div class="float-right">
                       <p class="mb-0 text-right">Laki-laki</p>
                       <div class="fluid-container">
-                        <h3 class="font-weight-medium text-danger mb-0">{{$jemaat->where('jk', 'Pria')->count()}}</h3>
+                        <h3 class="font-weight-medium text-danger mb-0">{{$jemaat->where('jk', 'Pria')->count()}}</h3> 
                       </div> 
                     </div>
                   </div>
@@ -83,7 +123,7 @@
               </div>
             </div>
 
-             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
                 <div class="card-body">
                   <div class="clearfix">

@@ -47,7 +47,7 @@ class TransaksiController extends Controller
                                 ->get();
         } else {
             $datas = Transaksi::get();
-        }
+        } 
         // return view('transaksi.index', compact('datas'));
         return view('transaksi.index', compact('transaksi', 'jemaat', 'acara', 'datas', 'datas1'));
         

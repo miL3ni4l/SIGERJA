@@ -14,12 +14,13 @@
 <div class="row">
 
   <div class="col-lg-2">
-    <a href="{{ route('transnikah.create') }}" class="btn btn-primary btn-rounded btn-fw"><i class="fa fa-plus"></i> Tambah transnikah</a>
+    <a href="{{ route('transnikah.create') }}" class="btn btn-primary btn-rounded btn-fw"><i class="fa fa-plus"></i> Tambah Pernikahan</a>
   </div>
 
 </div>
 <div class="row" style="margin-top: 20px;">
 
+@if(Auth::user()->level == 'admin')
 <div class="col-lg-12 grid-margin stretch-card" style="margin-top: 20px;">
               <div class="card">
 
@@ -114,4 +115,5 @@
               </div>
             </div>
           </div>
+          @endif
 @endsection

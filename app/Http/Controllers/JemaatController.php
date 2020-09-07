@@ -8,7 +8,7 @@ use App\Jemaat;
 use App\Talenta;
 use App\Jabatan;
 use App\Gerwil;
-use App\TransNikah;
+// use App\TransNikah;
 use Carbon\Carbon;
 use Session;    
 use Illuminate\Support\Facades\Redirect;

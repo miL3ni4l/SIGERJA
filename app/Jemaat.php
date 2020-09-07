@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Jemaat extends Model
 {
 	protected $table = 'jemaat';
-    protected $fillable = ['kode_jemaat', 'sts_klrg', 'pernikahan', 'kota', 'kelurahan','jabatan_id', 'talenta_id', 'nij', 'nama', 'sts_keluarga', 'jk', 'tempat_lahir', 'gerwil', 'pendidikan', 'ilmu',
+    protected $fillable = ['kode_jemaat', 'sts_klrg', 'pernikahan', 'ayah', 'ibu','kota', 'kelurahan','jabatan_id', 'talenta_id', 'nij', 'nama', 'sts_keluarga', 'jk', 'tempat_lahir', 'gerwil', 'pendidikan', 'ilmu',
     'tgl_lahir', 'agama', 'alamat', 'hp', 'sts_jemaat', 'goldar', 'pekerjaan'];
 
     // public function gerwil()

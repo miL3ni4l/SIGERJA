@@ -198,7 +198,7 @@
                           </td>
                         
                           <td>
-                            {{$data->jk === "L" ? "Laki - Laki" : "Perempuan"}}
+                           {{$data->jk === "Pria" ? "Pria" : "Wanita"}}
                           </td>
                         </tr>
                                 @endforeach
@@ -227,7 +227,10 @@
                           <th>
                             Nama
                           </th>
-                      
+
+                        <th>
+                            Status Anggota
+                          </th>
                           <th>
                             Jenis Kelamin
                           </th>
@@ -239,9 +242,11 @@
                                     <td class="py-1">
                             {{$data->nama}}
                           </td>
-                        
+                        <td>
+                            {{$data->sts_jemaat}}
+                          </td>
                           <td>
-                            {{$data->jk === "L" ? "Laki - Laki" : "Perempuan"}}
+                            {{$data->jk === "Pria" ? "Pria" : "Wanita"}}
                           </td>
                         </tr>
                                 @endforeach
