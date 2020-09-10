@@ -24,7 +24,7 @@ class CreateTransNikahsTable extends Migration
             $table->string('pdt');
             $table->string('tempat');
             $table->string('jam');
-            $table->string('cover')->nullable();
+            $table->string('cover')->nullable(); 
             $table->timestamps(); 
         });
     }

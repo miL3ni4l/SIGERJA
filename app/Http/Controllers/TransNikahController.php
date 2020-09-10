@@ -102,8 +102,8 @@ class TransNikahController extends Controller
         TransNikah::create([
                  
                 'kode' => $request->get('kode'),
-                // 'suami_id' => $request->get('suami_id'),
-                // 'istri_id' => $request->get('istri_id'),
+                'suami_id' => $request->get('suami_id'),
+                'istri_id' => $request->get('istri_id'),
                 'pdt' => $request->get('pdt'),
                 'jam' => $request->get('jam'),
                 'tempat' => $request->get('tempat'),

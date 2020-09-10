@@ -36,11 +36,13 @@ class CreateJemaatsTable extends Migration
             $table->enum('goldar', ['A', 'B', 'AB', 'O', 'RH+', 'RH-']);
             $table->string('pekerjaan')->nullable();
             $table->string('alamat');
-            $table->string('ayah')->nullable();
-            $table->string('ibu')->nullable();
+            $table->string('ayah');
+            $table->string('ibu');
             $table->string('pendidikan')->nullable();
             $table->string('ilmu')->nullable();
             $table->string('hp')->nullable();
+            $table->text('aktiv_gereja')->nullable();
+            $table->text('aktiv_masyarakat')->nullable();
             $table->enum('sts_jemaat', ['Jemaat', 'Simpatisan', 'Tamu']);
             $table->timestamps();
         });

@@ -266,44 +266,32 @@
                                 </label>
                         </div>
 
+
                         <div class="form-group{{ $errors->has('ayah') ? ' has-error' : '' }}">
                             <label for="ayah" class="col-md-4 control-label">Nama Ayah</label>
                             <div class="col-md-7">
-                                <div class="input-group"  >
-                                <input id="ayah_judul" type="text" class="form-control "   >
-                                <input id="ayah" type="hidden" multiple="multiple" name="ayah" value="{{ old('ayah') }}" required readonly="">
-                                <span class="input-group-btn">
-                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal2"><b>Cari</b> <span class="fa fa-search"></span></button>
-                                </span>
-                                </div>
+                                <input id="ayah" type="text" class="form-control" name="ayah" value="{{ old('ayah') }}" required>
                                 @if ($errors->has('ayah'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('ayah') }}</strong>
                                     </span>
                                 @endif
-                                 
                             </div>
                         </div>
 
                         
                         <div class="form-group{{ $errors->has('ibu') ? ' has-error' : '' }}">
-                            <label for="ayah" class="col-md-4 control-label">Nama Ibu</label>
+                            <label for="ibu" class="col-md-4 control-label">Nama Ibu</label>
                             <div class="col-md-7">
-                                <div class="input-group"  >
-                                <input id="ibu_judul" type="text" class="form-control "   >
-                                <input id="ibu" type="hidden" multiple="multiple" name="ibu" value="{{ old('ibu') }}" required readonly="">
-                                <span class="input-group-btn">
-                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal3"><b>Cari</b> <span class="fa fa-search"></span></button>
-                                </span>
-                                </div>
+                                <input id="ibu" type="text" class="form-control" name="ibu" value="{{ old('ibu') }}" required>
                                 @if ($errors->has('ibu'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('ibu') }}</strong>
                                     </span>
                                 @endif
-                                 
                             </div>
-                        </div>                      
+                        </div>
+
 
 
                            <div class="form-group{{ $errors->has('agama') ? ' has-error' : '' }}">
@@ -395,13 +383,7 @@
                                
                         </div>
 
-                      
-                  
-
-              
-
-            
-
+        
                         <div class="form-group{{ $errors->has('pekerjaan') ? ' has-error' : '' }}">
                             <label for="pekerjaan" class="col-md-4 control-label">Pekerjaan</label>
                             <div class="col-md-7">
@@ -426,7 +408,31 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('aktiv_gereja') ? ' has-error' : '' }}" >
+                            <label for="aktiv_gereja" class="col-md-4 control-label">Aktivitas di Gereja</label>
+                            <div class="col-md-7">
+                                <input id="aktiv_gereja" type="text" class="form-control"   name="aktiv_gereja" value="{{ old('aktiv_gereja') }}" required>
+                                @if ($errors->has('aktiv_gereja'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('aktiv_gereja') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
                               
+                        
+                        <div class="form-group{{ $errors->has('aktiv_masyarakat') ? ' has-error' : '' }}">
+                            <label for="aktiv_masyarakat" class="col-md-4 control-label">Aktivitas di Masyarakat</label>
+                            <div class="col-md-7">
+                                <input id="aktiv_masyarakat" type="text" class="form-control" name="aktiv_masyarakat" value="{{ old('aktiv_masyarakat') }}" required>
+                                @if ($errors->has('aktiv_masyarakat'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('aktiv_masyarakat') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('sts_keluarga') ? ' has-error' : '' }}">
                             <label for="sts_keluarga" class="col-md-4 control-label">Silsilah Keluarga (Jika tidak ada isi - )</label>
                             <div class="col-md-7">

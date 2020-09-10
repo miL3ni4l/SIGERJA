@@ -5,7 +5,7 @@
                 document.getElementById("suami_judul").value = $(this).attr('data-suami_judul');
                 document.getElementById("suami_id").value = $(this).attr('data-suami_id');
                 $('#myModal2').modal('hide');
-            });
+            }); 
 
             $(document).on('click', '.pilih_istri', function (e) {
                 document.getElementById("istri_judul").value = $(this).attr('data-istri_judul');
