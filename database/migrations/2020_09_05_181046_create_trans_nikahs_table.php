@@ -16,10 +16,11 @@ class CreateTransNikahsTable extends Migration
         Schema::create('trans_nikahs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('kode');
-            $table->integer('suami_id')->unsigned();
-            $table->foreign('suami_id')->references('id')->on('jemaat')->onDelete('cascade');
-            $table->integer('istri_id')->unsigned();
-            $table->foreign('istri_id')->references('id')->on('jemaat')->onDelete('cascade');
+            $table->integer('jemaat_id')->unsigned();
+            $table->foreign('jemaat_id')->references('id')->on('jemaat')->onDelete('cascade');
+            // $table->integer('istri_id')->unsigned();
+            // $table->foreign('istri_id')->references('id')->on('jemaat')->onDelete('cascade');
+            $table->string('istri_id');
             $table->date('tgl');
             $table->string('pdt');
             $table->string('tempat');

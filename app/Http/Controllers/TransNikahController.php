@@ -28,34 +28,31 @@ class TransnikahController extends Controller
     }
 
     public function index()
-    {    
-
-        $q = Transnikah::query();
+    {   
+        $q = TransNikah::query();
         if(Auth::user()->level == 'user')
         {
-            $q->where('suami_id', 'istri_id', Auth::user()->Jemaat->id);
+            $q->where('jemaat_id', 'istri_id', Auth::user()->Jemaat->id);
         }
         $datas1 = $q->get();
-        
-        $transnikah = Transnikah::get();
+
+        $transnikah = TransNikah::get();
         $jemaat   = Jemaat::get();
         
         
         if(Auth::user()->level == 'user') 
         { 
-            $datas = Transnikah::where('suami_id', 'istri_id', Auth::user()->jemaat->id)
+            $datas = TransNikah::where('jemaat_id', 'istri_id', Auth::user()->jemaat->id)
                                 ->get();
         } else {
-            $datas = Transnikah::get();
-        }
-
-         
-        // return view('transnikah.index', compact('datas'));
-        return view('transnikah.index', compact('transnikah', 'jemaat', 'datas', 'datas1'));
-
+            $datas = TransNikah::get();
+        } 
         
-
+        // return view('Talenta.index', compact('datas'));
+        return view('transnikah.index', compact('transnikah', 'jemaat', 'datas', 'datas1'));
+    
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -64,16 +61,8 @@ class TransnikahController extends Controller
      */
     public function create()
     {
-        
-     if(Auth::user()->level == 'user') {
-            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
-            return redirect()->to('/');
-        }
         $jemaats = Jemaat::get();
-        return view('transnikah.create', compact('jemaats'));
-
-       
-        
+        return view('transnikah.create', compact('jemaats'));    
     }
 
     /**
@@ -86,8 +75,8 @@ class TransnikahController extends Controller
     {
         $this->validate($request, [
             'kode' => 'required|string|max:255',
-            'suami_id' => 'required',
-            'istri_id' => 'required',
+            // 'jemaat_id' => 'required',
+            // 'istri_id' => 'required',
             
         ]);
 
@@ -101,18 +90,20 @@ class TransnikahController extends Controller
         } else {
             $cover = NULL;
         } 
+        
+        TransNikah::create($request->all());
 
-        Transnikah::create([
+        // Transnikah::create([
                  
-                'kode' => $request->get('kode'),
-                'suami_id' => $request->get('suami_id'),
-                'istri_id' => $request->get('istri_id'),
-                'pdt' => $request->get('pdt'),
-                'jam' => $request->get('jam'),
-                'tempat' => $request->get('tempat'),
-                'tgl' => $request->get('tgl'),
-                'cover' => $cover
-            ]);
+        //         'kode' => $request->get('kode'),
+        //         'suami_id' => $request->get('suami_id'),
+        //         // 'istri_id' => $request->get('istri_id'),
+        //         'pdt' => $request->get('pdt'),
+        //         'jam' => $request->get('jam'),
+        //         'tempat' => $request->get('tempat'),
+        //         'tgl' => $request->get('tgl'),
+        //         'cover' => $cover
+        //     ]);
 
         alert()->success('Berhasil.','Data telah ditambahkan!');
 
@@ -126,20 +117,20 @@ class TransnikahController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    // public function show($id)
+    // {
 
-        $data = Transnikah::findOrFail($id);
-
-
-        if((Auth::user()->level == 'user') && (Auth::user()->jemaat->id != $data->jemaat_id)) {
-                Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
-                return redirect()->to('/');
-        }
+    //     $data = Transnikah::findOrFail($id);
 
 
-        return view('transnikah.show', compact('data'));
-    }
+    //     if((Auth::user()->level == 'user') && (Auth::user()->jemaat->id != $data->jemaat_id)) {
+    //             Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+    //             return redirect()->to('/');
+    //     }
+
+
+    //     return view('transnikah.show', compact('data'));
+    // }
 
     /**
      * Show the form for editing the specified resource.

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Transnikah extends Model
 {
     protected $table = 'trans_nikahs';
-    protected $fillable = ['kode', 'suami_id', 'istri_id', 'tgl', 'jam', 'pdt', 'tempat', 'cover'];
+    protected $fillable = ['kode', 'jemaat_id', 'istri_id' ,'tgl', 'jam', 'pdt', 'tempat', 'cover'];
 
     public function jemaat()
     {

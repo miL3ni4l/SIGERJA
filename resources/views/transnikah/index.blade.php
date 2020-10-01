@@ -73,10 +73,10 @@
                           </td>
 
                           <td>
-                            {{$data->suami_id}} 
+                            {{$data->jemaat->nama}} 
                           </td>
                           <td>
-                            {{$data->istri_id}}
+                            {{$data->jemaat->nama}}
                           </td>
                           <td>
                             {{$data->tgl}}

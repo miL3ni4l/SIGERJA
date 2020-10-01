@@ -78,7 +78,7 @@ class TalentaController extends Controller
            
             'jemaat_id' => 'required',
             'nama_talenta' => 'required',
-        ]);
+        ]); 
         Talenta::create($request->all());
 
         // if (!empty($request->input('nama_talenta'))) {

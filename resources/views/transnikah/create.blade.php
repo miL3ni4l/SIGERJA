@@ -3,7 +3,7 @@
  
             $(document).on('click', '.pilih_suami', function (e) {
                 document.getElementById("suami_judul").value = $(this).attr('data-suami_judul');
-                document.getElementById("suami_id").value = $(this).attr('data-suami_id');
+                document.getElementById("jemaat_id").value = $(this).attr('data-jemaat_id');
                 $('#myModal2').modal('hide');
             }); 
 
@@ -62,27 +62,26 @@
                         </div>
                         
 
-                        <div class="form-group{{ $errors->has('suami_id') ? ' has-error' : '' }}">
-                            <label for="suami_id" class="col-md-4 control-label">Nama Suami</label>
+                        <div class="form-group{{ $errors->has('jemaat_id') ? ' has-error' : '' }}">
+                            <label for="jemaat_id" class="col-md-4 control-label">Nama Suami</label>
                             <div class="col-md-6">
                                 <div class="input-group">
                                 <input id="suami_judul" type="text" class="form-control" readonly="" required>
-                                <input id="suami_id" type="hidden" name="suami_id" value="{{ old('suami_id') }}" required readonly="">
+                                <input id="jemaat_id" type="hidden" name="jemaat_id" value="{{ old('jemaat_id') }}" required readonly="">
                                 <span class="input-group-btn">
                                     <button type="button" class="btn btn-success btn-secondary" data-toggle="modal" data-target="#myModal2"><b>Cari</b> <span class="fa fa-search"></span></button>
                                 </span>
                                 </div>
-                                @if ($errors->has('suami_id'))
+                                @if ($errors->has('jemaat_id'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('suami_id') }}</strong>
+                                        <strong>{{ $errors->first('jemaat_id') }}</strong>
                                     </span>
                                 @endif
                                  
                             </div>
                         </div>
                         
-                        
-                        <div class="form-group{{ $errors->has('istri_id') ? ' has-error' : '' }}">
+                          <div class="form-group{{ $errors->has('istri_id') ? ' has-error' : '' }}">
                             <label for="istri_id" class="col-md-4 control-label">Nama Istri</label>
                             <div class="col-md-6">
                                 <div class="input-group">
@@ -128,8 +127,8 @@
                                 @endif
                             </div>
                         </div>
-
-                          <div class="form-group{{ $errors->has('jam') ? ' has-error' : '' }}">
+                      
+                        <div class="form-group{{ $errors->has('jam') ? ' has-error' : '' }}">
                             <label for="jam" class="col-md-4 control-label">Jam</label>
                             <div class="col-md-6">
                                 <input id="jam" type="text" class="form-control" name="jam" value="{{ old('jam') }}">
@@ -140,6 +139,8 @@
                                 @endif
                             </div>
                         </div>
+
+                    
 
                         
                         <div class="form-group">
@@ -194,7 +195,7 @@
                       </thead>
                             <tbody>
                                 @foreach($jemaats as $data)
-                                <tr class="pilih_suami" data-suami_id="<?php echo $data->id; ?>" data-suami_judul="<?php echo $data->nama; ?>" >
+                                <tr class="pilih_suami" data-jemaat_id="<?php echo $data->id; ?>" data-suami_judul="<?php echo $data->nama; ?>" >
                                     <td class="py-1">
                             {{$data->nama}}
                           </td>
