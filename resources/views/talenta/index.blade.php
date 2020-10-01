@@ -36,8 +36,19 @@
                            <th>
                             Nama
                           </th>
+                           
+                           <th>
+                            Jenis Kelamin
+                          </th>
+                          
+                          <th>
+                            Status Keanggotaan
+                          </th>
                           <th>
                             Talenta
+                          </th>
+                          <th>
+                            No HP
                           </th>
                            <th>
                             Keterangan
@@ -51,13 +62,21 @@
                       <tbody>
                       @foreach($datas as $data)
                         <tr>
-                              <td>
-                            {{$data->nama}}
+                          <td>
+                            {{$data->jemaat->nama}}
+                          </td>
+                          <td>
+                            {{$data->jemaat->jk}}
+                          </td>
+                          <td>
+                            {{$data->jemaat->sts_jemaat}}
                           </td>
                           <td>
                             {{$data->nama_talenta}}
                           </td>
-
+                          <td>
+                            {{$data->jemaat->hp}}
+                          </td>
                           <td>
                             {{$data->ket}}
                           </td>

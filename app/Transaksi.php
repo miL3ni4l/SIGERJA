@@ -12,7 +12,7 @@ class Transaksi extends Model
     public function jemaat()
     {
     	return $this->belongsTo(Jemaat::class);
-    }
+    } 
 
     public function acara()
     {

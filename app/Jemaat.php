@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Jemaat extends Model
 {
 	protected $table = 'jemaat';
-    protected $fillable = ['kode_jemaat', 'sts_klrg', 'pernikahan', 'ayah', 'ibu','kota', 'kelurahan','jabatan_id', 'talenta_id', 'nij', 'nama', 'sts_keluarga', 'jk', 'tempat_lahir', 'gerwil', 'pendidikan', 'ilmu', 'aktiv_gereja', 'aktiv_masyarakat', 'tgl_lahir', 'agama', 'alamat', 'hp', 'sts_jemaat', 'goldar', 'pekerjaan'];
+    protected $fillable = ['kode_jemaat', 'sts_klrg', 'pernikahan', 'ayah', 'ibu', 'tgl_baptis', 'grj_baptis', 'pdt_baptis', 'kota', 'kelurahan','jabatan_id', 'talenta_id', 'nij', 'nama', 'sts_keluarga', 'jk', 'tempat_lahir', 'gerwil', 'pendidikan', 'ilmu', 'aktiv_gereja', 'aktiv_masyarakat', 'tgl_lahir', 'agama', 'alamat', 'hp', 'sts_jemaat', 'goldar', 'pekerjaan'];
 
     // public function gerwil()
     // {
@@ -43,7 +43,7 @@ class Jemaat extends Model
      */
     public function transnikah()
     {
-    	return $this->hasOne(TransNikah::class);
+    	return $this->hasMany(TransNikah::class);
     }
     public function transaksi()
     {

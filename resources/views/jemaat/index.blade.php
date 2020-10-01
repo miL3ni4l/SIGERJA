@@ -14,7 +14,7 @@
 <div class="row">
 
                         <div class="col-lg-2">
-                        <a href="{{ route('jemaat.create') }}" class="btn btn-primary btn-rounded btn-fw"><i class="fa fa-plus"></i> Tambah Jemaat</a>
+                        <a href="{{ route('jemaat.create') }}" class="btn btn-primary btn-rounded btn-fw"><i class="fa fa-plus"></i> Tambah Anggota</a>
                         </div>
                         </br> </br>
    			                
@@ -24,6 +24,7 @@
                           </button>
                           <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 30px, 0px);">
                             <a class="dropdown-item" href="{{url('laporan/jmt/pdf')}}"> Semua  </a>
+                            
                             <a class="dropdown-item" href="{{url('laporan/jmt/pdf?sts_jemaat=jemaat')}}"> Jemaat </a>
                             <a class="dropdown-item" href="{{url('laporan/jmt/pdf?sts_jemaat=simpatisan')}}"> Simpatisan </a>
                             <a class="dropdown-item" href="{{url('laporan/jmt/pdf?sts_jemaat=tamu')}}"> Tamu </a>

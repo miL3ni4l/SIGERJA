@@ -31,7 +31,7 @@
            <li class="nav-item {{ setActive(['jemaat*']) }}">
             <a class="nav-link" href="{{route('jemaat.index')}}">
               <i class="menu-icon mdi mdi-account"></i>
-              <span class="menu-title">Jemaat</span>
+              <span class="menu-title">Anggota</span>
             </a>
           </li>
           @if(Auth::user()->level == 'admin')
@@ -45,9 +45,6 @@
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
                   <a class="nav-link {{ setActive(['Trans_Nikah*']) }}" href="{{route('transnikah.index')}}">Data Pernikahan</a>                
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link {{ setActive(['Talenta*']) }}" href="{{route('talenta.index')}}">Data Talenta</a>                
                 </li>
                  <li class="nav-item">
                   <a class="nav-link {{ setActive(['user*']) }}" href="{{route('user.index')}}">Data Pengguna</a>

@@ -184,7 +184,9 @@
                           <th>
                             Nama
                           </th>
-                      
+                      <th>
+                            Status Keanggotan
+                          </th>
                           <th>
                             Jenis Kelamin
                           </th>
@@ -196,7 +198,9 @@
                                     <td class="py-1">
                             {{$data->nama}}
                           </td>
-                        
+                          <td>
+                            {{$data->sts_jemaat}}
+                          </td>
                           <td>
                            {{$data->jk === "Pria" ? "Pria" : "Wanita"}}
                           </td>
@@ -228,8 +232,8 @@
                             Nama
                           </th>
 
-                        <th>
-                            Status Anggota
+                          <th>
+                            Status Keanggotaan
                           </th>
                           <th>
                             Jenis Kelamin

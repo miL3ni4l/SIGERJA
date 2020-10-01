@@ -66,20 +66,50 @@ $(document).ready(function() {
                                  
                             </div>
                         </div>
-
-                       
+&nbsp; 
                         <div class="form-group{{ $errors->has('nama_talenta') ? ' has-error' : '' }}">
-                            <label for="nama_talenta" class="col-md-4 control-label">Talenta</label>
-                            <div class="col-md-6">
-                                <input id="nama_talenta" type="text" class="form-control" name="nama_talenta" value="{{ old('nama_talenta') }}" required>
-                                @if ($errors->has('nama_talenta'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('nama_talenta') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                        
+                              <label for="nama_talenta"  class="col-md-2 control-label">Status Anggota    </label>
+                                <div class="col-md-12" >
+                                                 
+                                <label >
+                                    <input type="radio" name="nama_talenta" value="Khotbah" >
+                                    Khotbah
+                                </label>   &nbsp; &nbsp;
+                                <label >
+                                    <input type="radio" name="nama_talenta" value="Pengajar">
+                                    Pengajar
+                                </label>   &nbsp; &nbsp;
+                                <label >
+                                    <input type="radio" name="nama_talenta" value="Pendoa">
+                                    Pendoa
+                                </label>   &nbsp; &nbsp; 
+                                <label>
+                                <input type="radio" name="nama_talenta" value="Konselor">
+                                    Konselor
+                                </label>   &nbsp; &nbsp; 
+                                <label>
+                                <input type="radio" name="nama_talenta" value="Musik">
+                                    Musik
+                                </label>  &nbsp; &nbsp;
+                                <label>
+                                <input type="radio" name="nama_talenta" value="Singer">
+                                    Singer
+                                </label>  &nbsp; &nbsp;
+                                <label>
+                                <input type="radio" name="nama_talenta" value="Worship Leader">
+                                    Worship Leader
+                                </label>  &nbsp; &nbsp;
+                                <label>
+                                <input type="radio" name="nama_talenta" value="Multimedia">
+                                    Multimedia
+                                </label> &nbsp; &nbsp;
+                                <label>
+
+                                </div>  
                         </div>
 
+&nbsp; 
                         <div class="form-group{{ $errors->has('ket') ? ' has-error' : '' }}">
                             <label for="ket" class="col-md-4 control-label">Keterangan</label>
                             <div class="col-md-6">

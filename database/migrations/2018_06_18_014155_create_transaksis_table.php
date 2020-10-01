@@ -20,7 +20,7 @@ class CreateTransaksisTable extends Migration
             $table->foreign('jemaat_id')->references('id')->on('jemaat')->onDelete('cascade');
             $table->integer('acara_id')->unsigned();
             $table->foreign('acara_id')->references('id')->on('acara')->onDelete('cascade');
-            $table->date('tgl_transaksi');
+            $table->date('tgl_transaksi'); 
             $table->string('bank');
             $table->string('rek');
             $table->string('jml_donasi');

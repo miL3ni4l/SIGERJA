@@ -36,6 +36,48 @@ $(document).ready(function() {
                             </div>
                         </div>
                         
+                        <div class="form-group{{ $errors->has('sts_klrg') ? ' has-error' : '' }}">
+                              <label for="goldar" class="col-md-2 control-label">Status Keluarga    </label>
+                              
+                                <label>
+                                    <input type="radio" name="sts_klrg" value="Suami">
+                                    Suami
+                                </label>   &nbsp; &nbsp; 
+                                <label>
+                                <input type="radio" name="sts_klrg" value="Istri">
+                                    Istri
+                                </label>   &nbsp; &nbsp; 
+                                <label> 
+                                <input type="radio" name="sts_klrg" value="Anak">
+                                    Anak
+                                </label>  &nbsp;&nbsp;
+                                <label>
+                                <input type="radio" name="sts_klrg" value="Lainnya">
+                                    Lainnya
+                                </label>
+                        </div>
+
+                          <div class="form-group{{ $errors->has('pernikahan') ? ' has-error' : '' }}">
+                              <label for="goldar" class="col-md-2 control-label">Status </label>
+                              
+                                <label>
+                                    <input type="radio" name="pernikahan" value="Belum Menikah">
+                                    Belum Menikah
+                                </label>   &nbsp; &nbsp; &nbsp;
+                                <label>
+                                <input type="radio" name="pernikahan" value="Menikah">
+                                    Menikah
+                                </label>  &nbsp; &nbsp; &nbsp;
+                                <label>
+                                <input type="radio" name="pernikahan" value="Janda">
+                                    Janda
+                                </label>   &nbsp; &nbsp; &nbsp;
+                                <label>
+                                <input type="radio" name="pernikahan" value="Duda">
+                                    Duda
+                                </label>
+                        </div>
+                         
                         <div class="form-group{{ $errors->has('alamat') ? ' has-error' : '' }}">
                             <label for="alamat" class="col-md-4 control-label">Alamat</label>
                             <div class="col-md-6">
@@ -63,17 +105,6 @@ $(document).ready(function() {
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('hp') ? ' has-error' : '' }}">
-                            <label for="hp" class="col-md-4 control-label">No HP</label>
-                            <div class="col-md-6">
-                                <input id="hp" type="text" class="form-control" name="hp" value="{{ old('hp') }}" required>
-                                @if ($errors->has('hp'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('hp') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
 
                          <div class="form-group{{ $errors->has('sts_jemaat') ? ' has-error' : '' }}">
                             <label for="sts_jemaat" class="col-md-4 control-label">Status</label>
@@ -81,6 +112,7 @@ $(document).ready(function() {
                             <select class="form-control" name="sts_jemaat" required="">
                                 <option value="Jemaat">Jemaat</option>
                                 <option value="Simpatisan">Simpatisan</option>
+                                <option value="Tamu">Tamu</option>
                             </select>
                             </div>
                         </div>

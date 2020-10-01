@@ -30,14 +30,26 @@ class TalentaController extends Controller
 
     public function index()
     {   
-        if(Auth::user()->level == 'user') {
-            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
-            return redirect()->to('/');
+        $q = Talenta::query();
+        if(Auth::user()->level == 'user')
+        {
+            $q->where('jemaat_id', Auth::user()->Jemaat->id);
         }
-        $jemaats   = Jemaat::get();
-        $datas = Talenta::get();
-        //  return view('talenta.index',array('jemaat' => $jemaat, 'datas' => $datas)); 
-          return view('talenta.index', compact('jemaats', 'datas'));
+        $datas1 = $q->get();
+
+        $talenta = Talenta::get();
+        $jemaat   = Jemaat::get();
+        
+        
+        if(Auth::user()->level == 'user') 
+        { 
+            $datas = Talenta::where('jemaat_id', Auth::user()->jemaat->id)
+                                ->get();
+        } else {
+            $datas = Talenta::get();
+        } 
+        // return view('Talenta.index', compact('datas'));
+        return view('talenta.index', compact('talenta', 'jemaat', 'datas', 'datas1'));
     
     }
 
@@ -46,13 +58,11 @@ class TalentaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        if(Auth::user()->level == 'user') {
-            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
-            return redirect()->to('/');
-        }
-         $jemaats = Jemaat::get();
+    public function create(Request $request)
+    {         
+        $jemaats = Jemaat::get();
+        
+
         return view('talenta.create' , compact('jemaats'));
     }
 
@@ -67,13 +77,20 @@ class TalentaController extends Controller
          $this->validate($request, [
            
             'jemaat_id' => 'required',
+            'nama_talenta' => 'required',
         ]);
         Talenta::create($request->all());
 
+        // if (!empty($request->input('nama_talenta'))) {
+        //     $checkbox = join(',' ,$request->input('nama_talenta'));
+        //     \DB::table('talentas')->insert(['nama_talenta'=>$checkbox]);
+        // } else {
+        //     $checkbox = '';
+        // }
         
-
         alert()->success('Berhasil.','Data telah ditambahkan!');
         return redirect()->route('talenta.index');
+        // return redirect()->back();
 
     }
 

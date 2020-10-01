@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Acara;
 use App\Jemaat;
-use App\TransNikah;
+use App\Transnikah;
 use Carbon\Carbon;
 use Session;
 use Illuminate\Support\Facades\Redirect;
@@ -14,7 +14,7 @@ use Auth;
 use DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class TransNikahController extends Controller
+class TransnikahController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -30,26 +30,29 @@ class TransNikahController extends Controller
     public function index()
     {    
 
-        $q = TransNikah::query();
+        $q = Transnikah::query();
         if(Auth::user()->level == 'user')
         {
-            $q->where('suami_id', Auth::user()->Jemaat->id);
+            $q->where('suami_id', 'istri_id', Auth::user()->Jemaat->id);
         }
         $datas1 = $q->get();
-
-        $trans = TransNikah::get();
+        
+        $transnikah = Transnikah::get();
         $jemaat   = Jemaat::get();
-
+        
         
         if(Auth::user()->level == 'user') 
-        {
-            $datas = TransNikah::where('suami_id', Auth::user()->jemaat->id) 
+        { 
+            $datas = Transnikah::where('suami_id', 'istri_id', Auth::user()->jemaat->id)
                                 ->get();
         } else {
-            $datas = TransNikah::get();
+            $datas = Transnikah::get();
         }
-        // return view('transaksi.index', compact('datas'));
-        return view('transnikah.index', compact('trans', 'jemaat', 'datas', 'datas1'));
+
+         
+        // return view('transnikah.index', compact('datas'));
+        return view('transnikah.index', compact('transnikah', 'jemaat', 'datas', 'datas1'));
+
         
 
     }
@@ -99,7 +102,7 @@ class TransNikahController extends Controller
             $cover = NULL;
         } 
 
-        TransNikah::create([
+        Transnikah::create([
                  
                 'kode' => $request->get('kode'),
                 'suami_id' => $request->get('suami_id'),
@@ -126,7 +129,7 @@ class TransNikahController extends Controller
     public function show($id)
     {
 
-        $data = TransNikah::findOrFail($id);
+        $data = Transnikah::findOrFail($id);
 
 
         if((Auth::user()->level == 'user') && (Auth::user()->jemaat->id != $data->jemaat_id)) {
@@ -135,7 +138,7 @@ class TransNikahController extends Controller
         }
 
 
-        return view('TransNikah.show', compact('data'));
+        return view('transnikah.show', compact('data'));
     }
 
     /**
@@ -146,16 +149,16 @@ class TransNikahController extends Controller
      */
     public function edit($id)
     {   
-        $data = TransNikah::findOrFail($id);
+        $data = Transnikah::findOrFail($id);
 
         if((Auth::user()->level == 'user') && (Auth::user()->jemaat->id != $data->jemaat_id)) {
                 Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
                 return redirect()->to('/');
         }
         $acaras = Acara::where('jumlah_acara', '>', 0)->get();
-        $kode = TransNikah::get();
-        $jemaats = TransNikah::get();
-        return view('TransNikah.edit1', compact('acaras','data', 'kode', 'jemaats'));
+        $kode = Transnikah::get();
+        $jemaats = Transnikah::get();
+        return view('transnikah.edit1', compact('acaras','data', 'kode', 'jemaats'));
     }
 
     /**
@@ -177,19 +180,19 @@ class TransNikahController extends Controller
         } else {
             $bukti = NULL;
         }
-        $TransNikah = TransNikah::find($id);
+        $transnikah = Transnikah::find($id);
 
-        $TransNikah->update([
+        $transnikah->update([
                 'status' => 'lunas'
                 ]);
 
-        $TransNikah->acara->where('id', $TransNikah->acara->id)
+        $transnikah->acara->where('id', $transnikah->acara->id)
                         ->update([
-                            'jumlah_acara' => ($TransNikah->acara->jumlah_acara + 1),
+                            'jumlah_acara' => ($transnikah->acara->jumlah_acara + 1),
                             ]);
 
         alert()->success('Berhasil.','Data telah diubah!');
-        return redirect()->route('TransNikah.index');
+        return redirect()->route('transnikah.index');
     }
 
     //TAMBAHAN
@@ -201,26 +204,26 @@ class TransNikahController extends Controller
                 return redirect()->to('/');
         }
 
-        $data = TransNikah::findOrFail($id);
+        $data = Transnikah::findOrFail($id);
         $users = User::get();
-        return view('TransNikah.edit', compact('data', 'users'));
+        return view('transnikah.edit', compact('data', 'users'));
     }
 
     public function update1(Request $request, $id)
     {
-        $TransNikah = TransNikah::find($id);
+        $transnikah = Transnikah::find($id);
 
-        $TransNikah->update([
+        $transnikah->update([
                 'status' => 'lunas'
                 ]);
 
-        $TransNikah->acara->where('id', $TransNikah->acara->id)
+        $transnikah->acara->where('id', $transnikah->acara->id)
                         ->update([
-                            'jumlah_acara' => ($TransNikah->acara->jumlah_acara + 1),
+                            'jumlah_acara' => ($transnikah->acara->jumlah_acara + 1),
                             ]);
 
         alert()->success('Berhasil.','Data telah diubah!');
-        return redirect()->route('TransNikah.index');
+        return redirect()->route('transnikah.index');
     }
 
     /**
@@ -231,7 +234,7 @@ class TransNikahController extends Controller
      */
     public function destroy($id)
     {
-        TransNikah::find($id)->delete();
+        Transnikah::find($id)->delete();
         alert()->success('Berhasil.','Data telah dihapus!');
         return redirect()->route('transnikah.index');
     }

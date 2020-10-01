@@ -81,10 +81,10 @@
     background-color: #009b4e; }
 	</style>
   <link rel="stylesheet" href="">
-	<title>Laporan Data Transaksi</title>
+	<title>Laporan Data Anggota</title>
 </head>
 <body>
-<h1 class="center">LAPORAN DATA TRANSAKSI</h1>
+<h1 class="center">LAPORAN DATA ANGGOTA</h1>
  <table id="pseudo-demo">
                       <thead>
                         <tr>

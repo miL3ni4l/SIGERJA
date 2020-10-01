@@ -47,11 +47,12 @@
                 <div class="col-12">
                   <div class="card">
                     <div class="card-body">
-                      <h2 class="card-title">Formulir Tambah Anggota Baru</h2>
-                      
+                      <h4 class="col-md-7">Formulir Tambah Anggota Baru</h4>
+                      &nbsp; &nbsp;
 
                         <div class="form-group{{ $errors->has('kode_jemaat') ? ' has-error' : '' }}">
-                            <label for="kode_jemaat" class="col-md-7 control-label">Kode Jemaat</label>
+                        
+                            <label for="kode_jemaat" class="col-md-7 control-label">Kode Anggota</label>
                             <div class="col-md-7">
                                 <input id="kode_jemaat" type="text" class="form-control" name="kode_jemaat" value="{{ $kode }}" required readonly="">
                                 @if ($errors->has('kode_jemaat'))
@@ -292,9 +293,43 @@
                             </div>
                         </div>
 
+                         <div class="form-group{{ $errors->has('tgl_baptis') ? ' has-error' : '' }}">
+                            <label for="tgl_baptis" class="col-md-4 control-label">Tanggal Baptis</label>
+                            <div class="col-md-7">
+                                <input id="tgl_baptis" type="date" class="form-control" name="tgl_baptis" value="{{ date('Y-m-d', strtotime(Carbon\Carbon::today()->toDateString())) }}" required @if(Auth::user()->level == 'user') readonly @endif>
+                                @if ($errors->has('tgl_baptis'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('tgl_baptis') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
+                        <div class="form-group{{ $errors->has('grj_baptis') ? ' has-error' : '' }}">
+                            <label for="grj_baptis" class="col-md-4 control-label">Baptis di Gereja</label>
+                            <div class="col-md-7">
+                                <input id="grj_baptis" type="text" class="form-control" name="grj_baptis" value="{{ old('grj_baptis') }}" required>
+                                @if ($errors->has('grj_baptis'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('grj_baptis') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
-                           <div class="form-group{{ $errors->has('agama') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('pdt_baptis') ? ' has-error' : '' }}">
+                            <label for="pdt_baptis" class="col-md-4 control-label">Dilayani oleh Pendeta</label>
+                            <div class="col-md-7">
+                                <input id="pdt_baptis" type="text" class="form-control" name="pdt_baptis" value="{{ old('pdt_baptis') }}" required>
+                                @if ($errors->has('pdt_baptis'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('pdt_baptis') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('agama') ? ' has-error' : '' }}">
                               <label for="agama" class="col-md-2 control-label">Agama Sebelumnya    :</label>
                               
                                 <label>

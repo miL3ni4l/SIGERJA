@@ -110,14 +110,14 @@
                       <i class="mdi mdi-gender-male text-success icon-lg"></i>
                     </div>
                     <div class="float-right">
-                      <p class="mb-0 text-right">Laki-laki</p>
+                      <p class="mb-0 text-right">Pria</p>
                       <div class="fluid-container">
                         <h3 class="font-weight-medium text-danger mb-0">{{$jemaat->where('jk', 'Pria')->count()}}</h3> 
                       </div> 
                     </div>
                   </div>
                   <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-chart-arc mr-1" aria-hidden="true"></i> Jemaat laki-laki
+                    <i class="mdi mdi-chart-arc mr-1" aria-hidden="true"></i> Jemaat pria
                   </p>
                 </div>
               </div>
@@ -131,14 +131,14 @@
                       <i class="mdi mdi-gender-female text-success icon-lg"></i>
                     </div>
                     <div class="float-right">
-                      <p class="mb-0 text-right">Perempuan</p>
+                      <p class="mb-0 text-right">Wanita</p>
                       <div class="fluid-container">
                         <h3 class="font-weight-medium text-danger mb-0">{{$jemaat->where('jk', 'Wanita')->count()}}</h3>
                       </div> 
                     </div>
                   </div>
                   <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-chart-arc mr-1" aria-hidden="true"></i> Jemaat Perempuan
+                    <i class="mdi mdi-chart-arc mr-1" aria-hidden="true"></i> Jemaat Wanita
                   </p>
                 </div>
               </div>
