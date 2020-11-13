@@ -19,15 +19,15 @@
               <div class="card">
 
                 <div class="card-body">
-                  <h4 class="card-title">Laporan Jemaat</h4>
+                  <h4 class="card-title">Laporan Anggota</h4>
                   <div class="btn-group dropdown">
                           <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <b><i class="fa fa-download"></i> Export PDF</b>
                           </button>
                           <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 30px, 0px);">
-                               <a class="dropdown-item" href="{{url('laporan/jmt/pdf')}}"> Semua  </a>
-                            <a class="dropdown-item" href="{{url('laporan/jmt/pdf?sts_jemaat=jemaat')}}"> Jemaat </a>
-                            <a class="dropdown-item" href="{{url('laporan/jmt/pdf?sts_jemaat=simpatisan')}}"> Simpatisan </a>
+                               <a class="dropdown-item" href="{{url('laporan/agt/pdf')}}"> Semua  </a>
+                            <a class="dropdown-item" href="{{url('laporan/agt/pdf?sts_anggota=jemaat')}}"> Anggota </a>
+                            <a class="dropdown-item" href="{{url('laporan/agt/pdf?sts_anggota=simpatisan')}}"> Simpatisan </a>
                           </div>
                         </div>
                         

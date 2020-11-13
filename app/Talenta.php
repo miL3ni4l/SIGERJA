@@ -10,8 +10,8 @@ class Talenta extends Model
     protected $fillable = ['jemaat_id','nama_talenta', 'ket'];
 
 
-    public function jemaat()
+    public function anggota()
     {
-    	return $this->belongsTo(Jemaat::class);
+    	return $this->belongsTo(Anggota::class);
     } 
 }

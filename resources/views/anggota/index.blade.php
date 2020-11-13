@@ -14,23 +14,25 @@
 <div class="row">
 
                         <div class="col-lg-2">
-                        <a href="{{ route('jemaat.create') }}" class="btn btn-primary btn-rounded btn-fw"><i class="fa fa-plus"></i> Tambah Anggota</a>
+                        <a href="{{ route('anggota.create') }}" class="btn btn-primary btn-rounded btn-fw"><i class="fa fa-plus"></i> Tambah Anggota</a>
                         </div>
                         </br> </br>
-   			                
+   			                &nbsp; &nbsp; &nbsp;
                          <div class=" col-lg-2">
                           <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <b><i class="fa fa-download"></i> Export PDF Jemaat</b>
+                            <b><i class="fa fa-download"></i> Export PDF Anggota</b>
                           </button>
                           <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 30px, 0px);">
-                            <a class="dropdown-item" href="{{url('laporan/jmt/pdf')}}"> Semua  </a>
+                            <a class="dropdown-item" href="{{url('laporan/agt/pdf')}}"> Semua  </a>
                             
-                            <a class="dropdown-item" href="{{url('laporan/jmt/pdf?sts_jemaat=jemaat')}}"> Jemaat </a>
-                            <a class="dropdown-item" href="{{url('laporan/jmt/pdf?sts_jemaat=simpatisan')}}"> Simpatisan </a>
-                            <a class="dropdown-item" href="{{url('laporan/jmt/pdf?sts_jemaat=tamu')}}"> Tamu </a>
+                            <a class="dropdown-item" href="{{url('laporan/agt/pdf?sts_anggota=jemaat')}}"> Jemaat </a>
+                            <a class="dropdown-item" href="{{url('laporan/agt/pdf?sts_anggota=simpatisan')}}"> Simpatisan </a>
+                            <a class="dropdown-item" href="{{url('laporan/agt/pdf?sts_anggota=tamu')}}"> Tamu </a>
                           </div>
                         </div>
                        &nbsp; &nbsp; &nbsp;
+                       &nbsp; &nbsp; &nbsp;
+                        &nbsp; &nbsp;
                        <div class=" col-lg-2">
                           <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <b><i class="fa fa-download"></i> Export PDF Gerwil</b>
@@ -64,12 +66,12 @@
                     <div class="float-right">
                       <p class="mb-0 text-right">Jemaat</p>
                       <div class="fluid-container">
-                      <h3 class="font-weight-medium text-danger mb-0">{{$jemaat->where('sts_jemaat', 'Jemaat')->count()}}</h3>
+                      <h3 class="font-weight-medium text-danger mb-0">{{$anggota->where('sts_anggota', 'Jemaat')->count()}}</h3>
                       </div>
                     </div>
                   </div>
                   <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-account mr-1" aria-hidden="true"></i> Total seluruh Jemaat
+                    <i class="mdi mdi-account mr-1" aria-hidden="true"></i> Total seluruh anggota
                   </p>
                 </div>
               </div>
@@ -85,12 +87,12 @@
                     <div class="float-right">
                       <p class="mb-0 text-right">Simpatisan</p>
                       <div class="fluid-container">
-                      <h3 class="font-weight-medium text-danger mb-0">{{$jemaat->where('sts_jemaat', 'Simpatisan')->count()}}</h3>
+                      <h3 class="font-weight-medium text-danger mb-0">{{$anggota->where('sts_anggota', 'Simpatisan')->count()}}</h3>
                       </div>
                     </div>
                   </div>
                   <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-account mr-1" aria-hidden="true"></i> Total seluruh Jemaat
+                    <i class="mdi mdi-account mr-1" aria-hidden="true"></i> Total seluruh anggota
                   </p>
                 </div>
               </div>
@@ -106,12 +108,12 @@
                     <div class="float-right">
                       <p class="mb-0 text-right">Tamu</p>
                       <div class="fluid-container">
-                      <h3 class="font-weight-medium text-danger mb-0">{{$jemaat->where('sts_jemaat', 'Tamu')->count()}}</h3>
+                      <h3 class="font-weight-medium text-danger mb-0">{{$anggota->where('sts_anggota', 'Tamu')->count()}}</h3>
                       </div>
                     </div>
                   </div>
                   <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-account mr-1" aria-hidden="true"></i> Total seluruh Jemaat
+                    <i class="mdi mdi-account mr-1" aria-hidden="true"></i> Total seluruh Tamu
                   </p>
                 </div>
               </div>
@@ -122,14 +124,14 @@
               <div class="card">
 
                 <div class="card-body">
-                  <h4 class="card-title">Data Jemaat</h4>
+                  <h4 class="card-title">Data Anggota</h4>
 
                   <div class="table-responsive">
                     <table class="table table-striped" id="table">
                       <thead>
                         <tr>
                         <th>
-                            No Jemaat
+                            No Anggota
                           </th>
                           <th>
                             Nama
@@ -144,7 +146,7 @@
                           </th>
                           
                           <th>
-                            Keterangan
+                            Status Keanggotaan
                           </th>
                           <th>
                             Action
@@ -155,8 +157,8 @@
                       @foreach($datas as $data)
                         <tr>
                         <td>
-                          <a href="{{route('jemaat.show', $data->id)}}"> 
-                            {{$data->kode_jemaat}}
+                          <a href="{{route('anggota.show', $data->id)}}"> 
+                            {{$data->kode_anggota}}
                           </a>
                           </td>
                           <td class="py-1">
@@ -173,7 +175,7 @@
                           </td>
 
                           <td>
-                            {{$data->sts_jemaat}}
+                            {{$data->sts_anggota}}
                           </td>
                           
 
@@ -183,8 +185,8 @@
                             Action
                           </button>
                           <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 30px, 0px);">
-                            <a class="dropdown-item" href="{{route('jemaat.edit', $data->id)}}"> Edit </a>
-                            <form action="{{ route('jemaat.destroy', $data->id) }}" class="pull-left"  method="post">
+                            <a class="dropdown-item" href="{{route('anggota.edit', $data->id)}}"> Edit </a>
+                            <form action="{{ route('anggota.destroy', $data->id) }}" class="pull-left"  method="post">
                             {{ csrf_field() }}
                             {{ method_field('delete') }}
                             <button class="dropdown-item" onclick="return confirm('Anda yakin ingin menghapus data ini?')"> Delete

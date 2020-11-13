@@ -13,7 +13,7 @@ $(document).ready(function() {
 
 @section('content')
 
-<form action="{{ route('jemaat.update', $data->id) }}" method="post" enctype="multipart/form-data">
+<form action="{{ route('anggota.update', $data->id) }}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
         {{ method_field('put') }}
 <div class="row">
@@ -22,10 +22,10 @@ $(document).ready(function() {
                 <div class="col-12">
                   <div class="card">
                     <div class="card-body">
-                      <h4 class="card-title">Edit Jemaat</h4>
+                      <h4 class="card-title">Edit Anggota</h4>
                       
                         <div class="form-group{{ $errors->has('nama') ? ' has-error' : '' }}">
-                            <label for="nama" class="col-md-4 control-label">Nama Jemaat</label>
+                            <label for="nama" class="col-md-4 control-label">Nama Anggota</label>
                             <div class="col-md-6">
                                 <input id="nama" type="text" class="form-control" name="nama" value="{{ $data->nama }}" required>
                                 @if ($errors->has('nama'))
@@ -40,6 +40,7 @@ $(document).ready(function() {
                               <label for="goldar" class="col-md-2 control-label">Status Keluarga    </label>
                               
                                 <label>
+                                
                                     <input type="radio" name="sts_klrg" value="Suami">
                                     Suami
                                 </label>   &nbsp; &nbsp; 
@@ -106,10 +107,10 @@ $(document).ready(function() {
                         </div>
 
 
-                         <div class="form-group{{ $errors->has('sts_jemaat') ? ' has-error' : '' }}">
-                            <label for="sts_jemaat" class="col-md-4 control-label">Status</label>
+                         <div class="form-group{{ $errors->has('sts_anggota') ? ' has-error' : '' }}">
+                            <label for="sts_anggota" class="col-md-4 control-label">Status</label>
                             <div class="col-md-6">
-                            <select class="form-control" name="sts_jemaat" required="">
+                            <select class="form-control" name="sts_anggota" required="">
                                 <option value="Jemaat">Jemaat</option>
                                 <option value="Simpatisan">Simpatisan</option>
                                 <option value="Tamu">Tamu</option>
@@ -125,7 +126,7 @@ $(document).ready(function() {
                         <button type="reset" class="btn btn-danger">
                                     Reset
                         </button>
-                        <a href="{{route('jemaat.index')}}" class="btn btn-light pull-right">Back</a>
+                        <a href="{{route('anggota.index')}}" class="btn btn-light pull-right">Back</a>
                     </div>
                   </div>
                 </div>

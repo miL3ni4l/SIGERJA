@@ -17,7 +17,7 @@ class CreateTransaksisTable extends Migration
             $table->increments('id');
             $table->string('kode_transaksi');
             $table->integer('jemaat_id')->unsigned();
-            $table->foreign('jemaat_id')->references('id')->on('jemaat')->onDelete('cascade');
+            $table->foreign('jemaat_id')->references('id')->on('anggota')->onDelete('cascade');
             $table->integer('acara_id')->unsigned();
             $table->foreign('acara_id')->references('id')->on('acara')->onDelete('cascade');
             $table->date('tgl_transaksi'); 

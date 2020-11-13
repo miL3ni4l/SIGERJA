@@ -39,7 +39,7 @@
 
 @section('content')
 
-<form method="POST" action="{{ route('jemaat.store') }}" enctype="multipart/form-data">
+<form method="POST" action="{{ route('anggota.store') }}" enctype="multipart/form-data">
     {{ csrf_field() }}
 <div class="row">
             <div class="col-md-12 d-flex align-items-stretch grid-margin">
@@ -50,32 +50,32 @@
                       <h4 class="col-md-7">Formulir Tambah Anggota Baru</h4>
                       &nbsp; &nbsp;
 
-                        <div class="form-group{{ $errors->has('kode_jemaat') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('kode_anggota') ? ' has-error' : '' }}">
                         
-                            <label for="kode_jemaat" class="col-md-7 control-label">Kode Anggota</label>
+                            <label for="kode_anggota" class="col-md-7 control-label">Kode Anggota</label>
                             <div class="col-md-7">
-                                <input id="kode_jemaat" type="text" class="form-control" name="kode_jemaat" value="{{ $kode }}" required readonly="">
-                                @if ($errors->has('kode_jemaat'))
+                                <input id="kode_anggota" type="text" class="form-control" name="kode_anggota" value="{{ $kode }}" required readonly="">
+                                @if ($errors->has('kode_anggota'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('kode_jemaat') }}</strong>
+                                        <strong>{{ $errors->first('kode_anggota') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('sts_jemaat') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('sts_anggota') ? ' has-error' : '' }}">
                               <label for="goldar" class="col-md-2 control-label">Status Anggota    </label>
                               
                                 <label>
-                                    <input type="radio" name="sts_jemaat" value="Jemaat">
+                                    <input type="radio" name="sts_anggota" value="Jemaat">
                                     Jemaat
                                 </label>   &nbsp; &nbsp; 
                                 <label>
-                                <input type="radio" name="sts_jemaat" value="Simpatisan">
+                                <input type="radio" name="sts_anggota" value="Simpatisan">
                                     Simpatisan
                                 </label>   &nbsp; &nbsp; 
                                 <label>
-                                <input type="radio" name="sts_jemaat" value="Tamu">
+                                <input type="radio" name="sts_anggota" value="Tamu">
                                     Tamu
                                 </label>
                         </div>
@@ -331,7 +331,7 @@
 
                         <div class="form-group{{ $errors->has('agama') ? ' has-error' : '' }}">
                               <label for="agama" class="col-md-2 control-label">Agama Sebelumnya    :</label>
-                              
+                              <div class="col-md-7">
                                 <label>
                                     <input type="radio" name="agama" value="Kristen">
                                     Kristen
@@ -356,12 +356,13 @@
                                 <input type="radio" name="agama" value="KhongHuCu">
                                     Khong Hu Cu
                                 </label>
+                                </div>
                         </div>
 
 
                         <div class="form-group{{ $errors->has('pendidikan') ? ' has-error' : '' }}">
                               <label for="pendidikan" class="col-md-2 control-label">Pendidikan    </label>
-                              
+                              <div class="col-md-7">
                                 <label>
                                     <input type="radio" name="pendidikan" value="SD">
                                     SD
@@ -398,37 +399,92 @@
                                 <input type="radio" name="pendidikan" value="S3">
                                     S3
                                 </label>
+                                </div>
                         </div>
 
                         <div class="form-group{{ $errors->has('ilmu') ? ' has-error' : '' }}">
                               <label for="ilmu" class="col-md-2 control-label">Bidang Ilmu    </label>
-                              
+                              <div class="col-md-7">
                                 <label>
-                                    <input type="radio" name="ilmu" value="SD">
+                                    <input type="radio" name="ilmu" value="Teknik">
                                     Teknik
                                 </label> &nbsp; &nbsp;
                                 <label>
-                                <input type="radio" name="ilmu" value="SLTP">
+                                <input type="radio" name="ilmu" value="Hukum">
                                     Hukum
                                 </label>&nbsp; &nbsp;
                                 <label>
-                                <input type="radio" name="ilmu" value="SLTA">
-                                    Dokter
+                                <input type="radio" name="ilmu" value="Sastra">
+                                    Sastra
                                 </label>&nbsp; &nbsp;
-                               
+                                <label>
+                                <input type="radio" name="ilmu" value="Ekonomi">
+                                    Ekonomi
+                                </label>&nbsp; &nbsp;
+                                <label>
+                                <input type="radio" name="ilmu" value="Kedokteran">
+                                    Kedokteran
+                                </label>&nbsp; &nbsp;
+                                <label>
+                                <input type="radio" name="ilmu" value="Sosial">
+                                    Sosial
+                                </label>&nbsp; &nbsp;
+                                <label>
+                                <input type="radio" name="ilmu" value="Politik">
+                                    Politik
+                                </label>&nbsp; &nbsp;
+                                <label>
+                                <input type="radio" name="ilmu" value="Komputer">
+                                    Komputer
+                                </label>&nbsp; &nbsp;
+                                <label>
+                                <input type="radio" name="ilmu" value="Theoligia">
+                                    Theologia
+                                </label>&nbsp; &nbsp;
+                                <label>
+                                <input type="radio" name="ilmu" value="Lainnya">
+                                    Lainnya
+                                </label>&nbsp; &nbsp;
+                               </div>
                         </div>
 
         
                         <div class="form-group{{ $errors->has('pekerjaan') ? ' has-error' : '' }}">
-                            <label for="pekerjaan" class="col-md-4 control-label">Pekerjaan</label>
-                            <div class="col-md-7">
-                                <input id="pekerjaan" type="text" class="form-control" name="pekerjaan" value="{{ old('pekerjaan') }}" required>
-                                @if ($errors->has('pekerjaan'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('pekerjaan') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                            <label for="pekerjaan" class="col-md-2 control-label">Pekerjaan</label>
+                                <div class="col-md-7">
+                                <label>
+                                    <input type="radio" name="pekerjaan" value="Wiraswasta">
+                                    Wiraswasta
+                                </label> &nbsp; &nbsp;
+                                <label>
+                                    <input type="radio" name="pekerjaan" value="PNS">
+                                    PNS
+                                </label> &nbsp; &nbsp;
+                                <label>
+                                    <input type="radio" name="pekerjaan" value="Guru/Dosen/Instruktur">
+                                    Guru/Dosen/Instruktur
+                                </label> &nbsp; &nbsp;
+                                <label>
+                                    <input type="radio" name="pekerjaan" value="Pegawai Swasta">
+                                    Pegawai Swasta
+                                </label> &nbsp; &nbsp;
+                                <label>
+                                    <input type="radio" name="pekerjaan" value="BUMN">
+                                    BUMN
+                                </label> &nbsp; &nbsp;
+                                <label>
+                                    <input type="radio" name="pekerjaan" value="ABRI">
+                                    ABRI
+                                </label> &nbsp; &nbsp;
+                                <label>
+                                    <input type="radio" name="pekerjaan" value="Bidang Keuangan">
+                                    Bidang Keuangan
+                                </label> &nbsp; &nbsp;
+                                <label>
+                                    <input type="radio" name="pekerjaan" value="Lainnya">
+                                    Lainnya
+                                </label> &nbsp; &nbsp;
+                                </div>
                         </div>
 
                         <div class="form-group{{ $errors->has('hp') ? ' has-error' : '' }}">
@@ -498,7 +554,7 @@
                         <button type="reset" class="btn btn-danger col-md-2">
                                     Reset
                         </button>
-                        <a href="{{route('jemaat.index')}}" class="btn btn-light pull-right">Back</a>
+                        <a href="{{route('anggota.index')}}" class="btn btn-light pull-right">Back</a>
                     </div>
                   </div>
                 </div>
@@ -556,12 +612,12 @@
                         <table id="lookup" class="table table-bordered table-hover table-striped">
                             <thead>
                                 <tr>
-                                    <th>Jemaat</th>
+                                    <th>Anggota</th>
                                      <th>Keterangan</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($jemaats as $data)
+                                @foreach($anggotas as $data)
                         <tr class="pilih_ayah" data-ayah_id="<?php echo $data->id; ?>" data-ayah_judul="<?php echo $data->nama; ?>" >
                                     <td>{{$data->nama}}</td>
                                     <td>{{$data->ket}}</td>
@@ -588,12 +644,12 @@
                         <table id="lookup" class="table table-bordered table-hover table-striped">
                             <thead>
                                 <tr>
-                                    <th>Jemaat</th>
+                                    <th>Anggota</th>
                                      <th>Keterangan</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($jemaats as $data)
+                                @foreach($anggotas as $data)
                         <tr class="pilih_ibu" data-ibu_id="<?php echo $data->id; ?>" data-ibu_judul="<?php echo $data->nama; ?>" >
                                     <td>{{$data->nama}}</td>
                                     <td>{{$data->ket}}</td>
@@ -625,10 +681,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($jemaats as $data)
+                                @foreach($anggotas as $data)
                         <tr class="pilih_keluarga1" data-sts_keluarga="<?php echo $data->id; ?>" data-keluarga1_judul="<?php echo $data->nama; ?>" >
                                     <td>{{$data->nama}}</td>
-                                    <td>{{$data->sts_jemaat}}</td>
+                                    <td>{{$data->sts_anggota}}</td>
                                 </tr>
                                 @endforeach
                             </tbody>

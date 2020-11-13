@@ -38,9 +38,11 @@
                           <th>
                             Nama Suami
                           </th>
+                          
                           <th>
                             Nama Istri
                           </th>
+                          
                           <th>
                             Tanggal
                           </th>
@@ -49,15 +51,15 @@
                             Pendeta
                           </th>
 
-                          <th>
-                            Dibuat Tanggal
-                          </th>
+                        
                           
                           <th>
                             Action
                           </th>
                         </tr>
                       </thead>
+
+                      
                       <tbody>
                       @foreach($datas as $data)
                         <tr>
@@ -73,19 +75,23 @@
                           </td>
 
                           <td>
+                          
                             {{$data->jemaat->nama}} 
                           </td>
+
+                          
+
+                        
                           <td>
-                            {{$data->jemaat->nama}}
+                            {{$data->id}}
+                            
                           </td>
+                        
                           <td>
                             {{$data->tgl}}
                           </td>
                           <td>
                             {{$data->pdt}} 
-                          </td>
-                          <td>
-                            {{$data->created_at}}
                           </td>
                         
                           <td>

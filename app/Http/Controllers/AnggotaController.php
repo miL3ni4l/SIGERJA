@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use App\Jemaat;
+use App\Anggota;
 use App\Talenta;
 use App\Jabatan;
 use App\Gerwil;
@@ -16,7 +16,7 @@ use Auth;
 use DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class JemaatController extends Controller
+class AnggotaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -40,10 +40,10 @@ class JemaatController extends Controller
         $jabatans   = Jabatan::get();
  
         
-        $jemaats   = Jemaat::get();
-        $datas = Jemaat::get();
-         return view('jemaat.index',array('jemaat' => $jemaats, 'datas' => $datas, 'gerwil' => $gerwils, 'jabatan' => $jabatans, 'talenta' => $talentas));
-        // return view('jemaat.index', compact('datas', 'jemaat', 'gerwil'));
+        $anggotas   = Anggota::get();
+        $datas = Anggota::get();
+         return view('anggota.index',array('anggota' => $anggotas, 'datas' => $datas, 'gerwil' => $gerwils, 'jabatan' => $jabatans, 'talenta' => $talentas));
+        // return view('anggota.index', compact('datas', 'anggota', 'gerwil'));
     }
 
 
@@ -54,7 +54,7 @@ class JemaatController extends Controller
         //     return redirect()->to('/');
         // }
 
-        $getRow = Jemaat::orderBy('id', 'DESC')->get();
+        $getRow = Anggota::orderBy('id', 'DESC')->get();
         $rowCount = $getRow->count();
         
         $lastId = $getRow->first();
@@ -77,15 +77,15 @@ class JemaatController extends Controller
  
         // $users = User::WhereNotExists(function($query) {
         //                 $query->select(DB::raw(1))
-        //                 ->from('jemaat')
-        //                 ->whereRaw('jemaat.user_id = users.id');
+        //                 ->from('anggota')
+        //                 ->whereRaw('anggota.user_id = users.id');
         //              })->get();
 
         $gerwils = Gerwil::get();
         $jabatans = Jabatan::get();
         $talentas = Talenta::get();
-        $jemaats = Jemaat::get();
-        return view('jemaat.create', compact('kode', 'gerwils', 'talentas', 'jemaats', 'jabatans'));
+        $anggotas = Anggota::get();
+        return view('anggota.create', compact('kode', 'gerwils', 'talentas', 'anggotas', 'jabatans'));
 
     }
     
@@ -99,19 +99,19 @@ class JemaatController extends Controller
      */
     public function store(Request $request)
     {
-        $count = Jemaat::where('kode_jemaat',$request->input('kode_jemaat'))->count();
+        $count = Anggota::where('kode_anggota',$request->input('kode_anggota'))->count();
 
         // if($count>0){
         //     Session::flash('message', 'Already exist!');
         //     Session::flash('message_type', 'danger');
-        //     return redirect()->to('jemaat');
+        //     return redirect()->to('anggota');
         // }
 
         $this->validate($request, [
-            // 'kode_jemaat' => 'required|string|max:255',
+            // 'kode_anggota' => 'required|string|max:255',
             'nama' => 'required|string|max:255',
             'gerwil' => 'required',
-            // 'nij' => 'required|string|max:20|unique:jemaat',
+            // 'nij' => 'required|string|max:20|unique:anggota',
             // 'sts_keluarga' => 'required',
             // 'jk' => 'required',
             // 'tempat_lahir' => 'required',
@@ -119,14 +119,14 @@ class JemaatController extends Controller
             // 'agama' => 'required',
             // 'alamat' => 'required',
             // 'hp' => 'required',
-            // 'sts_jemaat' => 'required',
+            // 'sts_Anggota' => 'required',
             // 'gerwil_id' => 'required',
             // 'jabatan_id' => 'required',
             // 'talenta_id' => 'required',
         ]);
          
-        Jemaat::create($request->all());
-    //    $jemaat = Jemaat::create([
+        Anggota::create($request->all());
+    //    $anggota = anggota::create([
     //             'nama' => $request->get('nama'),
     //             'nij' => $request->get('nij'),
     //             'gerwil_id' => $request->get('gerwil_id'),
@@ -135,7 +135,7 @@ class JemaatController extends Controller
     //         ]);
 
         alert()->success('Berhasil.','Data telah ditambahkan!');
-        return redirect()->route('jemaat.index');
+        return redirect()->route('anggota.index');
 
     }
 
@@ -146,7 +146,7 @@ class JemaatController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {   $data = Jemaat::findOrFail($id);
+    {   $data = anggota::findOrFail($id);
        
         // if((Auth::user()->level == 'user') && (Auth::user()->id != $id)) {
         //         Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
@@ -155,7 +155,7 @@ class JemaatController extends Controller
 
         
 
-        return view('jemaat.show', compact('data'));
+        return view('Anggota.show', compact('data'));
         
     }
 
@@ -172,13 +172,13 @@ class JemaatController extends Controller
         //         return redirect()->to('/');
         // }
 
-        $data = Jemaat::findOrFail($id);
+        $data = Anggota::findOrFail($id);
         //$users = User::get();
-        return view('jemaat.edit', compact('data'));
+        return view('anggota.edit', compact('data'));
         // $gerwils = Gerwil::get();
         // $jabatans = Jabatan::get();
         // $talentas = Talenta::get();
-        // return view('jemaat.create', compact('users', 'data', 'gerwils', 'talentas', 'jabatans'));
+        // return view('anggota.create', compact('users', 'data', 'gerwils', 'talentas', 'jabatans'));
     }
 
     /**
@@ -190,10 +190,10 @@ class JemaatController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Jemaat::find($id)->update($request->all());
+        Anggota::find($id)->update($request->all());
 
         alert()->success('Berhasil.','Data telah diubah!');
-        return redirect()->to('jemaat');
+        return redirect()->to('anggota');
     }
 
     /**
@@ -204,8 +204,8 @@ class JemaatController extends Controller
      */
     public function destroy($id)
     {
-        Jemaat::find($id)->delete();
+        Anggota::find($id)->delete();
         alert()->success('Berhasil.','Data telah dihapus!');
-        return redirect()->route('jemaat.index');
+        return redirect()->route('anggota.index');
     }
 }

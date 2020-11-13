@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\acara;
-use App\Jemaat;
+use App\Anggota;
 use App\Gerwil;
 use App\Transaksi;
 use Carbon\Carbon;
@@ -68,7 +68,7 @@ class LaporanController extends Controller
 
         if(Auth::user()->level == 'user')
         {
-            $q->where('jemaat_id', Auth::user()->Jemaat->id);
+            $q->where('anggota_id', Auth::user()->Anggota->id);
         }
 
         $datas = $q->get();
@@ -78,29 +78,29 @@ class LaporanController extends Controller
        return $pdf->download('laporan_transaksi_'.date('Y-m-d_H-i-s').'.pdf');
     }
 
-    //exsport JEMAAT DAN SIMPATISAN
-    public function jemaat()
+    //exsport Anggota DAN SIMPATISAN
+    public function anggota()
     {
 
-        return view('laporan.jemaat');
+        return view('laporan.anggota');
     }
 
-    public function jemaatPdf(Request $request)
+    public function anggotaPdf(Request $request)
     {
-        $q = Jemaat::query();
+        $q = Anggota::query();
 
-        if($request->get('sts_jemaat')) 
+        if($request->get('sts_anggota')) 
         {
-            if($request->get('sts_jemaat') == 'jemaat') 
+            if($request->get('sts_anggota') == 'jemaat') 
             {
-                $q->where('sts_jemaat', 'jemaat');
+                $q->where('sts_anggota', 'jemaat');
             }
-            elseif($request->get('sts_jemaat') == 'simpatisan') 
+            elseif($request->get('sts_anggota') == 'simpatisan') 
             {
-                $q->where('sts_jemaat', 'simpatisan');
+                $q->where('sts_anggota', 'simpatisan');
             } 
             else {
-                $q->where('sts_jemaat', 'tamu');
+                $q->where('sts_anggota', 'tamu');
             }
 
             
@@ -108,14 +108,14 @@ class LaporanController extends Controller
 
         if(Auth::user()->level == 'user')
         {
-            $q->where('jemaat_id', Auth::user()->Jemaat->id);
+            $q->where('anggota_id', Auth::user()->Anggota->id);
         }
 
         $datas = $q->get();
 
        // return view('laporan.transaksi_pdf', compact('datas'));
-       $pdf = PDF::loadView('laporan.jemaat_pdf', compact('datas'));
-       return $pdf->download('laporan_jemaat_'.date('Y-m-d_H-i-s').'.pdf');
+       $pdf = PDF::loadView('laporan.anggota_pdf', compact('datas'));
+       return $pdf->download('laporan_anggota_'.date('Y-m-d_H-i-s').'.pdf');
     }
 
     //GERWIL EXPORT
@@ -127,7 +127,7 @@ class LaporanController extends Controller
 
     public function gerwilPdf(Request $request)
     {
-        $q = Jemaat::query();
+        $q = Anggota::query();
 
 
         if($request->get('gerwil')) 
@@ -157,7 +157,7 @@ class LaporanController extends Controller
 
         if(Auth::user()->level == 'user')
         {
-            $q->where('jemaat_id', Auth::user()->Jemaat->id);
+            $q->where('anggota_id', Auth::user()->Anggota->id);
         }
 
         $datas = $q->get();

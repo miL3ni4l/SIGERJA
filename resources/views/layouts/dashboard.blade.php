@@ -48,14 +48,14 @@
                       <i class="mdi mdi-account-multiple text-success icon-lg"></i>
                     </div>
                     <div class="float-right">
-                      <p class="mb-0 text-right">Jemaat</p>
+                      <p class="mb-0 text-right">anggota</p>
                       <div class="fluid-container">
-                       <h3 class="font-weight-medium text-danger mb-0">{{$jemaat->where('sts_jemaat', 'Jemaat')->count()}}</h3>
+                       <h3 class="font-weight-medium text-danger mb-0">{{$anggota->where('sts_anggota', 'Jemaat')->count()}}</h3>
                       </div>
                     </div>
                   </div>
                   <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-chart-arc mr-1" aria-hidden="true"></i> Total seluruh Jemaat
+                    <i class="mdi mdi-chart-arc mr-1" aria-hidden="true"></i> Total seluruh anggota
                   </p>
                 </div>
               </div>
@@ -71,12 +71,12 @@
                     <div class="float-right">
                       <p class="mb-0 text-right">Simpatisan</p>
                       <div class="fluid-container">
-                       <h3 class="font-weight-medium text-danger mb-0">{{$jemaat->where('sts_jemaat', 'Simpatisan')->count()}}</h3>
+                       <h3 class="font-weight-medium text-danger mb-0">{{$anggota->where('sts_anggota', 'Simpatisan')->count()}}</h3>
                       </div>
                     </div>
                   </div>
                   <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-chart-arc mr-1" aria-hidden="true"></i> Total seluruh Jemaat
+                    <i class="mdi mdi-chart-arc mr-1" aria-hidden="true"></i> Total seluruh anggota
                   </p>
                 </div>
               </div>
@@ -91,12 +91,12 @@
                     <div class="float-right">
                       <p class="mb-0 text-right">Tamu</p>
                       <div class="fluid-container">
-                       <h3 class="font-weight-medium text-danger mb-0">{{$jemaat->where('sts_jemaat', 'Tamu')->count()}}</h3>
+                       <h3 class="font-weight-medium text-danger mb-0">{{$anggota->where('sts_anggota', 'Tamu')->count()}}</h3>
                       </div>
                     </div>
                   </div>
                   <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-chart-arc mr-1" aria-hidden="true"></i> Total seluruh Jemaat
+                    <i class="mdi mdi-chart-arc mr-1" aria-hidden="true"></i> Total seluruh anggota
                   </p>
                 </div>
               </div>
@@ -112,12 +112,12 @@
                     <div class="float-right">
                       <p class="mb-0 text-right">Pria</p>
                       <div class="fluid-container">
-                        <h3 class="font-weight-medium text-danger mb-0">{{$jemaat->where('jk', 'Pria')->count()}}</h3> 
+                        <h3 class="font-weight-medium text-danger mb-0">{{$anggota->where('jk', 'Pria')->count()}}</h3> 
                       </div> 
                     </div>
                   </div>
                   <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-chart-arc mr-1" aria-hidden="true"></i> Jemaat pria
+                    <i class="mdi mdi-chart-arc mr-1" aria-hidden="true"></i> anggota pria
                   </p>
                 </div>
               </div>
@@ -133,12 +133,12 @@
                     <div class="float-right">
                       <p class="mb-0 text-right">Wanita</p>
                       <div class="fluid-container">
-                        <h3 class="font-weight-medium text-danger mb-0">{{$jemaat->where('jk', 'Wanita')->count()}}</h3>
+                        <h3 class="font-weight-medium text-danger mb-0">{{$anggota->where('jk', 'Wanita')->count()}}</h3>
                       </div> 
                     </div>
                   </div>
                   <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-chart-arc mr-1" aria-hidden="true"></i> Jemaat Wanita
+                    <i class="mdi mdi-chart-arc mr-1" aria-hidden="true"></i> anggota Wanita
                   </p>
                 </div>
               </div>
@@ -174,14 +174,14 @@
                       <i class="mdi mdi-account-multiple text-success icon-lg"></i>
                     </div>
                     <div class="float-right">
-                      <p class="mb-0 text-right">Jemaat</p>
+                      <p class="mb-0 text-right">anggota</p>
                       <div class="fluid-container">
-                       <h3 class="counter text-right m-t-15 text-danger">{{$jemaats}}</h3>
+                       <h3 class="counter text-right m-t-15 text-danger">{{$anggotas}}</h3>
                       </div>
                     </div>
                   </div>
                   <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-chart-arc mr-1" aria-hidden="true"></i> Total seluruh Jemaat
+                    <i class="mdi mdi-chart-arc mr-1" aria-hidden="true"></i> Total seluruh anggota
                   </p>
                 </div>
               </div>

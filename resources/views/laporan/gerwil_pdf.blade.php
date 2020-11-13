@@ -89,7 +89,7 @@
                       <thead>
                         <tr>
                           <th>
-                            No Jemaat
+                            No Anggota
                           </th>
                           <th>
                             Nama
@@ -101,7 +101,7 @@
                           </th>
                           
                           <th>
-                            Keterangan
+                            Status Keanggotaan
                           </th>
                           
                         </tr>
@@ -111,7 +111,8 @@
                        <tr>
                           <td>
                           <a href="{{route('gerwil.show', $data->id)}}"> 
-                            {{$data->kode_jemaat}}
+                            {{$data->kode_anggota
+                            }}
                           </a>
                           </td>
                           <td class="py-1">
@@ -125,7 +126,7 @@
 
 
                           <td>
-                            {{$data->sts_jemaat}}
+                            {{$data->sts_anggota}}
                           </td>
                         </tr>
                       @endforeach

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateJemaatsTable extends Migration
+class CreateAnggotasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateJemaatsTable extends Migration
      */
     public function up()
     {
-        Schema::create('jemaat', function (Blueprint $table) {
+        Schema::create('anggota', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('kode_jemaat');
+            $table->string('kode_anggota');
             // $table->integer('user_id')->unsigned();
             // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             
@@ -59,7 +59,7 @@ class CreateJemaatsTable extends Migration
             $table->text('aktiv_gereja')->nullable();
             $table->text('aktiv_masyarakat')->nullable();
             //NOT NULL
-            $table->enum('sts_jemaat', ['Jemaat', 'Simpatisan', 'Tamu']);
+            $table->enum('sts_anggota', ['Jemaat', 'Simpatisan', 'Tamu']);
             $table->timestamps();
         });
     }
@@ -71,6 +71,6 @@ class CreateJemaatsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jemaats');
+        Schema::dropIfExists('anggotas');
     }
 }

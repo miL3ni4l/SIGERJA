@@ -32,25 +32,26 @@ class TransnikahController extends Controller
         $q = TransNikah::query();
         if(Auth::user()->level == 'user')
         {
-            $q->where('jemaat_id', 'istri_id', Auth::user()->Jemaat->id);
+            $q->where('jemaat_id',  Auth::user()->Jemaat->id);
         }
         $datas1 = $q->get();
 
         $transnikah = TransNikah::get();
-        $jemaat   = Jemaat::get();
+        $jemaat   = Jemaat::all();
         
         
         if(Auth::user()->level == 'user') 
         { 
-            $datas = TransNikah::where('jemaat_id', 'istri_id', Auth::user()->jemaat->id)
-                                ->get();
+            $datas = TransNikah::where('jemaat_id', Auth::user()->jemaat->id)->get();
+            $datas = TransNikah::where('istri_id', Auth::user()->jemaat->id)->get();
         } else {
             $datas = TransNikah::get();
         } 
         
         // return view('Talenta.index', compact('datas'));
-        return view('transnikah.index', compact('transnikah', 'jemaat', 'datas', 'datas1'));
-    
+        //return view('transnikah.index', compact('transnikah', 'jemaat', 'datas', 'datas1'));
+        //return view('transnikah.index', array('transnikah'=> $transnikah , 'jemaat' => $jemaat, 'datas'=>$datas, 'datas1'=> $datas));
+         return view('transnikah.index',['transnikah' => $transnikah, 'jemaat' => $jemaat, 'datas'=>$datas, 'datas1'=> $datas]);
     }
 
 
@@ -75,8 +76,8 @@ class TransnikahController extends Controller
     {
         $this->validate($request, [
             'kode' => 'required|string|max:255',
-            // 'jemaat_id' => 'required',
-            // 'istri_id' => 'required',
+            'jemaat_id' => 'required',
+            'istri_id' => 'required',
             
         ]);
 
@@ -96,8 +97,8 @@ class TransnikahController extends Controller
         // Transnikah::create([
                  
         //         'kode' => $request->get('kode'),
-        //         'suami_id' => $request->get('suami_id'),
-        //         // 'istri_id' => $request->get('istri_id'),
+        //         'jemaat_id' => $request->get('jemaat_id'),
+        //         'istri_id' => $request->get('istri_id'),
         //         'pdt' => $request->get('pdt'),
         //         'jam' => $request->get('jam'),
         //         'tempat' => $request->get('tempat'),

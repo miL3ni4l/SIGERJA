@@ -28,20 +28,20 @@
             </a>
           </li>
          
-           <li class="nav-item {{ setActive(['jemaat*']) }}">
-            <a class="nav-link" href="{{route('jemaat.index')}}">
+           <li class="nav-item {{ setActive(['anggota*']) }}">
+            <a class="nav-link" href="{{route('anggota.index')}}">
               <i class="menu-icon mdi mdi-account"></i>
               <span class="menu-title">Anggota</span>
             </a>
           </li>
           @if(Auth::user()->level == 'admin')
-          <li class="nav-item {{ setActive(['Jemaat*', 'acara*', 'user*']) }}">
+          <li class="nav-item {{ setActive(['Anggota*', 'acara*', 'user*']) }}">
             <a class="nav-link " data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-content-copy"></i>
               <span class="menu-title">Master Data</span>
               <i class="menu-arrow"></i>
             </a>
-            <div class="collapse {{ setShow(['Jemaat*', 'acara*', 'user*']) }}" id="ui-basic">
+            <div class="collapse {{ setShow(['Anggota*', 'acara*', 'user*']) }}" id="ui-basic">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
                   <a class="nav-link {{ setActive(['Trans_Nikah*']) }}" href="{{route('transnikah.index')}}">Data Pernikahan</a>                
@@ -55,13 +55,13 @@
           
            
           @else
-          <li class="nav-item {{ setActive(['Jemaat*', 'acara*', 'user*']) }}">
+          <li class="nav-item {{ setActive(['Anggota*', 'acara*', 'user*']) }}">
             <a class="nav-link " data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-content-copy"></i>
               <span class="menu-title">Master Data</span>
               <i class="menu-arrow"></i>
             </a>
-            <div class="collapse {{ setShow(['Jemaat*', 'acara*', 'user*']) }}" id="ui-basic">
+            <div class="collapse {{ setShow(['Anggota*', 'acara*', 'user*']) }}" id="ui-basic">
               <ul class="nav flex-column sub-menu">
                 
                 <li class="nav-item">

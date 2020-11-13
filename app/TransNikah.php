@@ -9,9 +9,9 @@ class Transnikah extends Model
     protected $table = 'trans_nikahs';
     protected $fillable = ['kode', 'jemaat_id', 'istri_id' ,'tgl', 'jam', 'pdt', 'tempat', 'cover'];
 
-    public function jemaat()
+    public function anggota()
     {
-    	return $this->belongsTo(Jemaat::class);
+    	return $this->belongsTo(Anggota::class);
     }
 
 } 

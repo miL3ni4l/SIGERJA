@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Transaksi;
-use App\Jemaat;
+use App\Anggota;
 use App\Acara;
 use App\User;
 use App\TransNikah;
@@ -35,7 +35,7 @@ class HomeController extends Controller
     {
         //Check User Yang Belum Menjadi Anggota
         // if(Auth::user()->level == 'user'){
-        //    $users = Jemaat::where('id', Auth::user()->jemaat->id);
+        //    $users = Anggota::where('id', Auth::user()->anggota->id);
            
         // } 
    
@@ -44,16 +44,16 @@ class HomeController extends Controller
 
         //    <h3 class="font-weight-medium text-danger mb-0">{{$transaksis1-> $datas2 -> where('status', 'lunas')->count()}}</h3>
 
-        //  <h3 class="font-weight-medium text-danger mb-0">{{$datas1->where('jemaat_id', Auth::user()->Jemaat->id)->count()}}</h3>
+        //  <h3 class="font-weight-medium text-danger mb-0">{{$datas1->where('anggota_id', Auth::user()->Anggota->id)->count()}}</h3>
         $q = Transaksi::query();
         if(Auth::user()->level == 'user')
         {
-            $q->where('jemaat_id', Auth::user()->Jemaat->id);
+            $q->where('anggota_id', Auth::user()->Anggota->id);
         }
         $datas1 = $q->get(); 
         // $datas1 = Transaksi::sum('total_donasi');
         
-        $jemaats = Jemaat::count(); 
+        $anggotas = Anggota::count(); 
         $acaras = Acara::count();
 
         $transaksis = Transaksi::sum('total_donasi');
@@ -70,19 +70,19 @@ class HomeController extends Controller
         $talentas  = Talenta::get();
         $jabatans   = Jabatan::get();
 
-        $jemaat   = Jemaat::get();
+        $anggota   = Anggota::get();
 
         $transnikah = TransNikah::get();
 
         if(Auth::user()->level == 'user')
         {
             $datas = Transaksi::where('status', 'belum')
-                                ->where('jemaat_id', Auth::user()->Jemaat->id)
+                                ->where('anggota_id', Auth::user()->Anggota->id)
                                 ->get();
         } else {
             $datas = Transaksi::where('status', 'belum')->get();
         }
-        return view('layouts.dashboard',array('jabatan' => $jabatans, 'transnikah' => $transnikah, 'talenta' => $talentas, 'jemaat' => $jemaat, 'jemaats' => $jemaats, 'transaksi' => $transaksi, 'acaras' => $acaras, 'transaksis' => $transaksis, 'user' => $user,'datas' => $datas, 'transaksi1' => $transaksi1 , 'q' => $q , 'datas1' => $datas1,  'datas2' => $datas2
+        return view('layouts.dashboard',array('jabatan' => $jabatans, 'transnikah' => $transnikah, 'talenta' => $talentas, 'anggota' => $anggota, 'anggotas' => $anggotas, 'transaksi' => $transaksi, 'acaras' => $acaras, 'transaksis' => $transaksis, 'user' => $user,'datas' => $datas, 'transaksi1' => $transaksi1 , 'q' => $q , 'datas1' => $datas1,  'datas2' => $datas2
         ));
     
         

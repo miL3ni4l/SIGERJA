@@ -17,10 +17,10 @@ class CreateTransNikahsTable extends Migration
             $table->increments('id');
             $table->string('kode');
             $table->integer('jemaat_id')->unsigned();
-            $table->foreign('jemaat_id')->references('id')->on('jemaat')->onDelete('cascade');
-            // $table->integer('istri_id')->unsigned();
-            // $table->foreign('istri_id')->references('id')->on('jemaat')->onDelete('cascade');
-            $table->string('istri_id');
+            $table->foreign('jemaat_id')->references('id')->on('anggota')->onDelete('cascade');
+            $table->integer('istri_id')->unsigned();
+            $table->foreign('istri_id')->references('id')->on('anggota')->onDelete('cascade');
+            // $table->string('istri_id');
             $table->date('tgl');
             $table->string('pdt');
             $table->string('tempat');
