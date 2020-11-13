@@ -121,6 +121,7 @@ class AcaraController extends Controller
      */
     public function store(Request $request)
     {
+        
         $this->validate($request, [
             'nama_acr' => 'required|string|max:255',
             'bank_id' => 'required',
