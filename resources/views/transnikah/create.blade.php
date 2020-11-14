@@ -194,13 +194,13 @@
                         </tr>
                       </thead>
                             <tbody>
-                                @foreach($jemaats as $data)
+                                @foreach($anggotas as $data)
                                 <tr class="pilih_suami" data-jemaat_id="<?php echo $data->id; ?>" data-suami_judul="<?php echo $data->nama; ?>" >
                                     <td class="py-1">
                             {{$data->nama}}
                           </td>
                           <td>
-                            {{$data->sts_jemaat}}
+                            {{$data->sts_anggota}}
                           </td>
                           <td>
                            {{$data->jk === "Pria" ? "Pria" : "Wanita"}}
@@ -242,13 +242,13 @@
                         </tr>
                       </thead>
                             <tbody>
-                                @foreach($jemaats as $data)
+                                @foreach($anggotas as $data)
                                 <tr class="pilih_istri" data-istri_id="<?php echo $data->id; ?>" data-istri_judul="<?php echo $data->nama; ?>" >
                                     <td class="py-1">
                             {{$data->nama}}
                           </td>
                         <td>
-                            {{$data->sts_jemaat}}
+                            {{$data->sts_anggota}}
                           </td>
                           <td>
                             {{$data->jk === "Pria" ? "Pria" : "Wanita"}}

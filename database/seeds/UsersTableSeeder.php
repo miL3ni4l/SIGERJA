@@ -26,12 +26,12 @@ class UsersTableSeeder extends Seeder
             ],
             [
               'id'  			=> 2,
-              'name'  			=> 'Angga DK',
-              'username'		=> 'anggadk',
-              'email' 			=> 'user@gmail.com',
-              'password'		=> bcrypt('anggadk'),
+              'name'  			=> 'TEKNIK - DWIKAHARAP',
+              'username'		=> 'teknik',
+              'email' 			=> 'user_teknik@gmail.com',
+              'password'		=> bcrypt('teknik'),
               'gambar'			=> NULL,
-              'level'			=> 'user',
+              'level'			=> 'admin',
               'remember_token'	=> NULL,
               'created_at'      => \Carbon\Carbon::now(),
               'updated_at'      => \Carbon\Carbon::now()

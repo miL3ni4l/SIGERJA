@@ -61,7 +61,7 @@
 
                       
                       <tbody>
-                      @foreach($datas as $data)
+                      @foreach($transnikah as $data)
                         <tr>
                           <td class="py-1">
                           @if($data->cover)
@@ -75,15 +75,11 @@
                           </td>
 
                           <td>
-                          
-                            {{$data->jemaat->nama}} 
+                            {{$data->anggota['nama']}} 
                           </td>
-
                           
-
-                        
                           <td>
-                            {{$data->id}}
+                            {{$data->istri_id}}
                             
                           </td>
                         

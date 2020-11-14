@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Acara;
-use App\Jemaat;
+use App\Anggota;
 use App\Transnikah;
 use Carbon\Carbon;
 use Session;
@@ -30,28 +30,31 @@ class TransnikahController extends Controller
     public function index()
     {   
         $q = TransNikah::query();
-        if(Auth::user()->level == 'user')
-        {
-            $q->where('jemaat_id',  Auth::user()->Jemaat->id);
-        }
-        $datas1 = $q->get();
+        // if(Auth::user()->level == 'user')
+        // {
+        //     $q->where('jemaat_id',  Auth::user()->Anggota->id);
+        //     $q->where('istri_id',  Auth::user()->Anggota->id);
+        // }
+        // $datas1 = $q->get();
 
         $transnikah = TransNikah::get();
-        $jemaat   = Jemaat::all();
+        $anggota   = Anggota::all();
         
         
-        if(Auth::user()->level == 'user') 
-        { 
-            $datas = TransNikah::where('jemaat_id', Auth::user()->jemaat->id)->get();
-            $datas = TransNikah::where('istri_id', Auth::user()->jemaat->id)->get();
-        } else {
-            $datas = TransNikah::get();
-        } 
+        // if(Auth::user()->level == 'user') 
+        // { 
+        //     $datas = TransNikah::where('jemaat_id', Auth::user()->anggota->id)->get();
+        //     $datas = TransNikah::where('istri_id', Auth::user()->anggota->id)->get();
+        // } else {
+        //     $datas = TransNikah::get();
+        // } 
         
         // return view('Talenta.index', compact('datas'));
-        //return view('transnikah.index', compact('transnikah', 'jemaat', 'datas', 'datas1'));
-        //return view('transnikah.index', array('transnikah'=> $transnikah , 'jemaat' => $jemaat, 'datas'=>$datas, 'datas1'=> $datas));
-         return view('transnikah.index',['transnikah' => $transnikah, 'jemaat' => $jemaat, 'datas'=>$datas, 'datas1'=> $datas]);
+        // return view('transnikah.index', compact('transnikah', 'anggota'));
+        return view('transnikah.index', array('transnikah'=> $transnikah , 'anggota' => $anggota));
+
+        // return view('transnikah.index', array('transnikah'=> $transnikah , 'anggota' => $anggota, 'datas'=>$datas, 'datas1'=> $datas));
+        //  return view('transnikah.index' , ['transnikah' => $transnikah, 'anggota' => $anggota, 'datas'=>$datas, 'datas1'=> $datas]);
     }
 
 
@@ -62,8 +65,8 @@ class TransnikahController extends Controller
      */
     public function create()
     {
-        $jemaats = Jemaat::get();
-        return view('transnikah.create', compact('jemaats'));    
+        $anggotas = Anggota::get();
+        return view('transnikah.create', compact('anggotas'));    
     }
 
     /**
@@ -97,7 +100,7 @@ class TransnikahController extends Controller
         // Transnikah::create([
                  
         //         'kode' => $request->get('kode'),
-        //         'jemaat_id' => $request->get('jemaat_id'),
+        //         'anggota_id' => $request->get('anggota_id'),
         //         'istri_id' => $request->get('istri_id'),
         //         'pdt' => $request->get('pdt'),
         //         'jam' => $request->get('jam'),
@@ -124,7 +127,7 @@ class TransnikahController extends Controller
     //     $data = Transnikah::findOrFail($id);
 
 
-    //     if((Auth::user()->level == 'user') && (Auth::user()->jemaat->id != $data->jemaat_id)) {
+    //     if((Auth::user()->level == 'user') && (Auth::user()->anggota->id != $data->anggota_id)) {
     //             Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
     //             return redirect()->to('/');
     //     }
@@ -143,14 +146,14 @@ class TransnikahController extends Controller
     {   
         $data = Transnikah::findOrFail($id);
 
-        if((Auth::user()->level == 'user') && (Auth::user()->jemaat->id != $data->jemaat_id)) {
+        if((Auth::user()->level == 'user') && (Auth::user()->anggota->id != $data->anggota_id)) {
                 Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
                 return redirect()->to('/');
         }
         $acaras = Acara::where('jumlah_acara', '>', 0)->get();
         $kode = Transnikah::get();
-        $jemaats = Transnikah::get();
-        return view('transnikah.edit1', compact('acaras','data', 'kode', 'jemaats'));
+        $anggotas = Anggota::get();
+        return view('transnikah.edit1', compact('acaras','data', 'kode', 'anggotas'));
     }
 
     /**
