@@ -128,12 +128,13 @@
                             </div>
                         </div>
                       
+
                         <div class="form-group{{ $errors->has('jam') ? ' has-error' : '' }}">
                             <label for="jam" class="col-md-4 control-label">Jam</label>
                             <div class="col-md-6">
-                                <input id="jam" type="text" class="form-control" name="jam" value="{{ old('jam') }}">
+                                <input id="jam" type="time" class="form-control timepicker" name="jam" value="{{ old('jam') }}">
                                 @if ($errors->has('jam'))
-                                    <span class="help-block">
+                                    <span class="input-group-addon">
                                         <strong>{{ $errors->first('jam') }}</strong>
                                     </span>
                                 @endif

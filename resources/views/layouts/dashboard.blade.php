@@ -48,7 +48,7 @@
                       <i class="mdi mdi-account-multiple text-success icon-lg"></i>
                     </div>
                     <div class="float-right">
-                      <p class="mb-0 text-right">anggota</p>
+                      <p class="mb-0 text-right">Jemaat</p>
                       <div class="fluid-container">
                        <h3 class="font-weight-medium text-danger mb-0">{{$anggota->where('sts_anggota', 'Jemaat')->count()}}</h3>
                       </div>
@@ -155,16 +155,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
 @else   
             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
@@ -174,7 +164,7 @@
                       <i class="mdi mdi-account-multiple text-success icon-lg"></i>
                     </div>
                     <div class="float-right">
-                      <p class="mb-0 text-right">anggota</p>
+                      <p class="mb-0 text-right">Anggota</p>
                       <div class="fluid-container">
                        <h3 class="counter text-right m-t-15 text-danger">{{$anggotas}}</h3>
                       </div>
