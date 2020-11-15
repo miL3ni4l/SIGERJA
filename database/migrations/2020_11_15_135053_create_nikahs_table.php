@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTalentasTable extends Migration
+class CreateNikahsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,18 @@ class CreateTalentasTable extends Migration
      */
     public function up()
     {
-        Schema::create('talentas', function (Blueprint $table) {
+        Schema::create('nikahs', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('kode');
             $table->integer('anggota_id')->unsigned();
             $table->foreign('anggota_id')->references('id')->on('anggota')->onDelete('cascade');
             $table->integer('istri_id')->unsigned();
             $table->foreign('istri_id')->references('id')->on('anggota')->onDelete('cascade');
-            // $table->Integer('anggota_id')->references('id')->on('anggotas')->onDelete('restrict');
-            $table->string('nama_talenta');
-            $table->string('ket');
+            $table->date('tgl');
+            $table->string('pdt');
+            $table->string('tempat');
+            $table->string('jam');
+            $table->string('cover')->nullable();
             $table->timestamps();
         });
     }
@@ -33,6 +36,6 @@ class CreateTalentasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('talentas');
+        Schema::dropIfExists('nikahs');
     }
 }

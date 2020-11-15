@@ -7,7 +7,7 @@ use App\Transaksi;
 use App\Anggota;
 use App\Acara;
 use App\User;
-use App\TransNikah;
+use App\nikah;
 // use App\Gerwil;
 use App\Talenta;
 use App\Jabatan;
@@ -72,7 +72,7 @@ class HomeController extends Controller
 
         $anggota   = Anggota::get();
 
-        $transnikah = TransNikah::get();
+        $nikah = nikah::get();
 
         if(Auth::user()->level == 'user')
         {
@@ -82,7 +82,7 @@ class HomeController extends Controller
         } else {
             $datas = Transaksi::where('status', 'belum')->get();
         }
-        return view('layouts.dashboard',array('jabatan' => $jabatans, 'transnikah' => $transnikah, 'talenta' => $talentas, 'anggota' => $anggota, 'anggotas' => $anggotas, 'transaksi' => $transaksi, 'acaras' => $acaras, 'transaksis' => $transaksis, 'user' => $user,'datas' => $datas, 'transaksi1' => $transaksi1 , 'q' => $q , 'datas1' => $datas1,  'datas2' => $datas2
+        return view('layouts.dashboard',array('jabatan' => $jabatans, 'nikah' => $nikah, 'talenta' => $talentas, 'anggota' => $anggota, 'anggotas' => $anggotas, 'transaksi' => $transaksi, 'acaras' => $acaras, 'transaksis' => $transaksis, 'user' => $user,'datas' => $datas, 'transaksi1' => $transaksi1 , 'q' => $q , 'datas1' => $datas1,  'datas2' => $datas2
         ));
     
         

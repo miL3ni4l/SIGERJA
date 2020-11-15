@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\anggota;
-use App\Talenta;
+use App\Nikah;
 use App\Jabatan;
 use App\Gerwil;
 use Carbon\Carbon;
@@ -15,7 +15,7 @@ use Auth;
 use DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class TalentaController extends Controller
+class NikahController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -30,26 +30,26 @@ class TalentaController extends Controller
 
     public function index()
     {   
-        $q = Talenta::query();
+        $q = Nikah::query();
         // if(Auth::user()->level == 'user')
         // {
         //     $q->where('anggota_id', Auth::user()->anggota->id);
         // }
         $datas1 = $q->get();
 
-        $talenta = Talenta::get();
+        $nikah = Nikah::get();
         $anggota   = Anggota::get();
         
         
         // if(Auth::user()->level == 'user') 
         // { 
-        //     $datas = Talenta::where('anggota_id', Auth::user()->anggota->id)
+        //     $datas = Nikah::where('anggota_id', Auth::user()->anggota->id)
         //                         ->get();
         // } else {
-        //     $datas = Talenta::get();
+        //     $datas = Nikah::get();
         // } 
-        // return view('Talenta.index', compact('datas'));
-        return view('talenta.index', compact('talenta', 'anggota', 'datas1'));
+        // return view('Nikah.index', compact('datas'));
+        return view('nikah.index', compact('nikah', 'anggota', 'datas1'));
     
     }
 
@@ -63,7 +63,7 @@ class TalentaController extends Controller
         $anggotas = anggota::get();
         
 
-        return view('talenta.create' , compact('anggotas'));
+        return view('nikah.create' , compact('anggotas'));
     }
 
     /**
@@ -77,19 +77,13 @@ class TalentaController extends Controller
          $this->validate($request, [
            
             'anggota_id' => 'required',
-            'nama_talenta' => 'required',
+            'istri_id' => 'required',
+            // 'nama_nikah' => 'required',
         ]); 
-        Talenta::create($request->all());
-
-        // if (!empty($request->input('nama_talenta'))) {
-        //     $checkbox = join(',' ,$request->input('nama_talenta'));
-        //     \DB::table('talentas')->insert(['nama_talenta'=>$checkbox]);
-        // } else {
-        //     $checkbox = '';
-        // }
+        Nikah::create($request->all());
         
         alert()->success('Berhasil.','Data telah ditambahkan!');
-        return redirect()->route('talenta.index');
+        return redirect()->route('nikah.index');
         // return redirect()->back();
 
     }
@@ -109,12 +103,12 @@ class TalentaController extends Controller
                 return redirect()->to('/');
         }
 
-        $data = Talenta::findOrFail($id);
-        return view('Talenta.edit', compact('data'));
+        $data = Nikah::findOrFail($id);
+        return view('Nikah.edit', compact('data'));
     }
 
      public function show($id)
-    {   $data = Talenta::findOrFail($id);
+    {   $data = Nikah::findOrFail($id);
     
         if((Auth::user()->level == 'user') && (Auth::user()->id != $id)) {
                 Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
@@ -123,7 +117,7 @@ class TalentaController extends Controller
         
         $anggotas = anggota::get();
 
-        return view('talenta.show', compact('data', 'anggotas'));
+        return view('nikah.show', compact('data', 'anggotas'));
         
     }
 
@@ -136,10 +130,10 @@ class TalentaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Talenta::find($id)->update($request->all());
+        Nikah::find($id)->update($request->all());
 
         alert()->success('Berhasil.','Data telah diubah!');
-        return redirect()->to('talenta');
+        return redirect()->to('nikah');
     }
 
     /**
@@ -150,8 +144,8 @@ class TalentaController extends Controller
      */
     public function destroy($id)
     {
-        Talenta::find($id)->delete();
+        Nikah::find($id)->delete();
         alert()->success('Berhasil.','Data telah dihapus!');
-        return redirect()->route('talenta.index');
+        return redirect()->route('nikah.index');
     }
 }

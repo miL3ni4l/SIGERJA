@@ -12,88 +12,91 @@
 
 @section('content')
 <div class="row">
-<div class="col-lg-2">
-                        <a href="{{ route('talenta.create') }}" class="btn btn-primary btn-rounded btn-fw"><i class="fa fa-plus"></i> Tambah Talenta</a>
-                        </div>
 
-    <div class="col-lg-12">
-                  @if (Session::has('message'))
-                  <div class="alert alert-{{ Session::get('message_type') }}" id="waktu2" style="margin-top:10px;">{{ Session::get('message') }}</div>
-                  @endif
-                  </div>
+  <div class="col-lg-2">
+    <a href="{{ route('nikah.create') }}" class="btn btn-primary btn-rounded btn-fw"><i class="fa fa-plus"></i> Tambah Pernikahan</a>
+  </div>
+
 </div>
 <div class="row" style="margin-top: 20px;">
-<div class="col-lg-12 grid-margin stretch-card">
+
+@if(Auth::user()->level == 'admin')
+<div class="col-lg-12 grid-margin stretch-card" style="margin-top: 20px;">
               <div class="card">
 
                 <div class="card-body">
-                  <h4 class="card-title">Data talenta</h4>
-                  
+                  <h4 class="card-title pull-left">Data nikah</h4>
+           
                   <div class="table-responsive">
                     <table class="table table-striped" id="table">
                       <thead>
                         <tr>
-                           <th>
+                          
+                          <th>
+                            No
+                          </th>
+                          <th>
                             Nama Suami
-                          </th>
-                           <th>
-                            Nama Istri
-                          </th>
-                           <th>
-                            Jenis Kelamin
                           </th>
                           
                           <th>
-                            Status Keanggotaan
+                            Nama Istri
                           </th>
+                          
                           <th>
-                            Talenta
+                            Tanggal
                           </th>
-                          <th>
-                            No HP
-                          </th>
+
                            <th>
-                            Keterangan
+                            Pendeta
                           </th>
-                         
+
+                        
+                          
                           <th>
                             Action
                           </th>
                         </tr>
                       </thead>
+
+                      
                       <tbody>
-                      @foreach($talenta as $data)
+                      @foreach($nikah as $data)
                         <tr>
-                          <td>
-                            {{$data->anggota->nama}}
-                          </td>
-                          <td>
-                            {{$data->anggota->nama}}
-                          </td>
-                          <td>
-                            {{$data->anggota->jk=='anggota'}}
-                          </td>
-                          <td>
-                            {{$data->anggota->sts_anggota}}
-                          </td>
-                          <td>
-                            {{$data->nama_talenta}}
-                          </td>
-                          <td>
-                            {{$data->anggota->hp}}
-                          </td>
-                          <td>
-                            {{$data->ket}}
+                          <td class="py-1">
+                          @if($data->cover)
+                            <img src="{{url('images/nikah/'. $data->cover)}}" alt="image" style="margin-right: 10px;" />
+                          @else
+                            <img src="{{url('images/nikah/default.png')}}" alt="image" style="margin-right: 10px;" />
+                          @endif
+                          <a href="{{route('nikah.show', $data->id)}}"> 
+                            {{$data->kode}}
+                          </a>
                           </td>
 
                           <td>
-                           <div class="btn-group dropdown">
+                            {{$data->anggota->nama}} 
+                          </td>
+                          
+                          <td>
+                            {{$data->istri_id = $data->anggota->nama}}
+                          </td>
+                        
+                          <td>
+                            {{$data->tgl}}
+                          </td>
+                          <td>
+                            {{$data->pdt}} 
+                          </td>
+                        
+                          <td>
+                          <div class="btn-group dropdown">
                           <button type="button" class="btn btn-success dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Action
                           </button>
                           <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 30px, 0px);">
-                            <a class="dropdown-item" href="{{route('talenta.edit', $data->id)}}"> Edit </a>
-                            <form action="{{ route('talenta.destroy', $data->id) }}" class="pull-left"  method="post">
+                            <a class="dropdown-item" href="{{route('nikah.edit', $data->id)}}"> Edit </a>
+                            <form action="{{ route('nikah.destroy', $data->id) }}" class="pull-left"  method="post">
                             {{ csrf_field() }}
                             {{ method_field('delete') }}
                             <button class="dropdown-item" onclick="return confirm('Anda yakin ingin menghapus data ini?')"> Delete
@@ -113,4 +116,5 @@
               </div>
             </div>
           </div>
+          @endif
 @endsection

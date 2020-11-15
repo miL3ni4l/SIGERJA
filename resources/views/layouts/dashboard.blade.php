@@ -28,7 +28,7 @@
                     <div class="float-right">
                       <p class="mb-0 text-right">Kepala Keluarga</p>
                       <div class="fluid-container">
-                        <h3 class="font-weight-medium text-danger mb-0">{{$transnikah->count()}}</h3>
+                        <h3 class="font-weight-medium text-danger mb-0">{{$nikah->count()}}</h3>
                       </div>
                     </div>
                   </div>

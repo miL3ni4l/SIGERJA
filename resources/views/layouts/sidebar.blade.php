@@ -44,7 +44,7 @@
             <div class="collapse {{ setShow(['Anggota*', 'acara*', 'user*']) }}" id="ui-basic">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
-                  <a class="nav-link {{ setActive(['Trans_Nikah*']) }}" href="{{route('transnikah.index')}}">Data Pernikahan</a>                
+                  <a class="nav-link {{ setActive(['Trans_Nikah*']) }}" href="{{route('nikah.index')}}">Data Pernikahan</a>                
                 </li>
                  <li class="nav-item">
                   <a class="nav-link {{ setActive(['user*']) }}" href="{{route('user.index')}}">Data Pengguna</a>

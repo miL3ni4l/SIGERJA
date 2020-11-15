@@ -8,6 +8,12 @@
                 $('#myModal2').modal('hide');
             });
 
+            $(document).on('click', '.pilih_istri', function (e) {
+                document.getElementById("istri_judul").value = $(this).attr('data-istri_judul');
+                document.getElementById("istri_id").value = $(this).attr('data-istri_id');
+                $('#myModal3').modal('hide');
+            });
+
 $(document).ready(function() {
     $(".users").select2();
 });
@@ -67,6 +73,26 @@ $(document).ready(function() {
                             </div>
                         </div>
 &nbsp; 
+                        <div class="form-group{{ $errors->has('istri_id') ? ' has-error' : '' }}">
+                            <label for="istri_id" class="col-md-4 control-label">Istri</label>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                <input id="istri_judul" type="text" class="form-control"  required>
+                                <input id="istri_id" type="hidden" name="istri_id" value="{{ old('istri_id') }}" required readonly="">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-success btn-secondary" data-toggle="modal" data-target="#myModal3"><b>Cari</b> <span class="fa fa-search"></span></button>
+                                </span>
+                                </div>
+                                @if ($errors->has('istri_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('istri_id') }}</strong>
+                                    </span>
+                                @endif
+                                 
+                            </div>
+                        </div>
+&nbsp; 
+                        
                         <div class="form-group{{ $errors->has('nama_talenta') ? ' has-error' : '' }}">
                         
                               <label for="nama_talenta"  class="col-md-2 control-label">Status Anggota    </label>
@@ -161,6 +187,39 @@ $(document).ready(function() {
                             <tbody>
                                 @foreach($anggotas as $data)
                         <tr class="pilih_anggota" data-anggota_id="<?php echo $data->id; ?>" data-anggota_judul="<?php echo $data->nama; ?>" >
+                                    <td>{{$data->nama}}</td>
+                                    <td>{{$data->sts_anggota}}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>  
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+ <!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
+  <div class="modal-dialog modal-lg" role="document" >
+    <div class="modal-content" style="background: #fff;">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cari anggota</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+                        <table id="lookup" class="table table-bordered table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nama</th>
+                                     <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($anggotas as $data)
+                        <tr class="pilih_istri" data-istri_id="<?php echo $data->id; ?>" data-istri_judul="<?php echo $data->nama; ?>" >
                                     <td>{{$data->nama}}</td>
                                     <td>{{$data->sts_anggota}}</td>
                                 </tr>

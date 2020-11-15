@@ -53,4 +53,8 @@ class Anggota extends Model
     {
     	return $this->hasMany(Talenta::class);
     }
+            public function nikah()
+    {
+    	return $this->hasMany(Nikah::class);
+    }
 }

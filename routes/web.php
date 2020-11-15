@@ -33,6 +33,7 @@ Route::resource('user', 'UserController');
 Route::resource('anggota', 'AnggotaController');
 Route::resource('gerwil', 'GerwilController');
 Route::resource('talenta', 'TalentaController');
+Route::resource('nikah', 'NikahController');
 Route::resource('jabatan', 'JabatanController');
 
 Route::resource('acara', 'AcaraController');
