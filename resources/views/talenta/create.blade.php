@@ -2,9 +2,9 @@
 
 <script type="text/javascript">
 
-            $(document).on('click', '.pilih_jemaat', function (e) {
-                document.getElementById("jemaat_judul").value = $(this).attr('data-jemaat_judul');
-                document.getElementById("jemaat_id").value = $(this).attr('data-jemaat_id');
+            $(document).on('click', '.pilih_anggota', function (e) {
+                document.getElementById("anggota_judul").value = $(this).attr('data-anggota_judul');
+                document.getElementById("anggota_id").value = $(this).attr('data-anggota_id');
                 $('#myModal2').modal('hide');
             });
 
@@ -48,19 +48,19 @@ $(document).ready(function() {
                     <div class="card-body">
                       <h4 class="card-title">Tambah Talenta</h4>
                       
-                        <div class="form-group{{ $errors->has('jemaat_id') ? ' has-error' : '' }}">
-                            <label for="jemaat_id" class="col-md-4 control-label">Jemaat</label>
+                        <div class="form-group{{ $errors->has('anggota_id') ? ' has-error' : '' }}">
+                            <label for="anggota_id" class="col-md-4 control-label">anggota</label>
                             <div class="col-md-6">
                                 <div class="input-group">
-                                <input id="jemaat_judul" type="text" class="form-control"  required>
-                                <input id="jemaat_id" type="hidden" name="jemaat_id" value="{{ old('jemaat_id') }}" required readonly="">
+                                <input id="anggota_judul" type="text" class="form-control"  required>
+                                <input id="anggota_id" type="hidden" name="anggota_id" value="{{ old('anggota_id') }}" required readonly="">
                                 <span class="input-group-btn">
                                     <button type="button" class="btn btn-success btn-secondary" data-toggle="modal" data-target="#myModal2"><b>Cari</b> <span class="fa fa-search"></span></button>
                                 </span>
                                 </div>
-                                @if ($errors->has('jemaat_id'))
+                                @if ($errors->has('anggota_id'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('jemaat_id') }}</strong>
+                                        <strong>{{ $errors->first('anggota_id') }}</strong>
                                     </span>
                                 @endif
                                  
@@ -145,7 +145,7 @@ $(document).ready(function() {
   <div class="modal-dialog modal-lg" role="document" >
     <div class="modal-content" style="background: #fff;">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cari jemaat</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Cari anggota</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -159,10 +159,10 @@ $(document).ready(function() {
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($jemaats as $data)
-                        <tr class="pilih_jemaat" data-jemaat_id="<?php echo $data->id; ?>" data-jemaat_judul="<?php echo $data->nama; ?>" >
+                                @foreach($anggotas as $data)
+                        <tr class="pilih_anggota" data-anggota_id="<?php echo $data->id; ?>" data-anggota_judul="<?php echo $data->nama; ?>" >
                                     <td>{{$data->nama}}</td>
-                                    <td>{{$data->sts_jemaat}}</td>
+                                    <td>{{$data->sts_anggota}}</td>
                                 </tr>
                                 @endforeach
                             </tbody>

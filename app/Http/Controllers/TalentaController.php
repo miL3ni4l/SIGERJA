@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use App\Jemaat;
+use App\anggota;
 use App\Talenta;
 use App\Jabatan;
 use App\Gerwil;
@@ -33,23 +33,23 @@ class TalentaController extends Controller
         $q = Talenta::query();
         if(Auth::user()->level == 'user')
         {
-            $q->where('jemaat_id', Auth::user()->Jemaat->id);
+            $q->where('anggota_id', Auth::user()->anggota->id);
         }
         $datas1 = $q->get();
 
         $talenta = Talenta::get();
-        $jemaat   = Jemaat::get();
+        $anggota   = anggota::get();
         
         
         if(Auth::user()->level == 'user') 
         { 
-            $datas = Talenta::where('jemaat_id', Auth::user()->jemaat->id)
+            $datas = Talenta::where('anggota_id', Auth::user()->anggota->id)
                                 ->get();
         } else {
             $datas = Talenta::get();
         } 
         // return view('Talenta.index', compact('datas'));
-        return view('talenta.index', compact('talenta', 'jemaat', 'datas', 'datas1'));
+        return view('talenta.index', compact('talenta', 'anggota', 'datas', 'datas1'));
     
     }
 
@@ -60,10 +60,10 @@ class TalentaController extends Controller
      */
     public function create(Request $request)
     {         
-        $jemaats = Jemaat::get();
+        $anggotas = anggota::get();
         
 
-        return view('talenta.create' , compact('jemaats'));
+        return view('talenta.create' , compact('anggotas'));
     }
 
     /**
@@ -76,7 +76,7 @@ class TalentaController extends Controller
     {   
          $this->validate($request, [
            
-            'jemaat_id' => 'required',
+            'anggota_id' => 'required',
             'nama_talenta' => 'required',
         ]); 
         Talenta::create($request->all());
@@ -121,9 +121,9 @@ class TalentaController extends Controller
                 return redirect()->to('/');
         }
         
-        $jemaats = Jemaat::get();
+        $anggotas = anggota::get();
 
-        return view('talenta.show', compact('data', 'jemaats'));
+        return view('talenta.show', compact('data', 'anggotas'));
         
     }
 

@@ -63,19 +63,19 @@
                       @foreach($datas as $data)
                         <tr>
                           <td>
-                            {{$data->jemaat->nama}}
+                            {{$data->anggota->nama}}
                           </td>
                           <td>
-                            {{$data->jemaat->jk}}
+                            {{$data->anggota->jk}}
                           </td>
                           <td>
-                            {{$data->jemaat->sts_jemaat}}
+                            {{$data->anggota->sts_anggota}}
                           </td>
                           <td>
                             {{$data->nama_talenta}}
                           </td>
                           <td>
-                            {{$data->jemaat->hp}}
+                            {{$data->anggota->hp}}
                           </td>
                           <td>
                             {{$data->ket}}
