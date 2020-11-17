@@ -34,21 +34,18 @@
                       <thead>
                         <tr>
                            <th>
-                            Nama Suami
-                          </th>
-                           <th>
-                            Nama Istri
-                          </th>
-                           <th>
-                            Jenis Kelamin
-                          </th>
-                          
-                          <th>
-                            Status Keanggotaan
+                            Nama
                           </th>
                           <th>
                             Talenta
                           </th>
+                          <th>
+                            Status
+                          </th> 
+                           <th>
+                            Jenis Kelamin
+                          </th>
+                          
                           <th>
                             No HP
                           </th>
@@ -68,17 +65,16 @@
                             {{$data->anggota->nama}}
                           </td>
                           <td>
-                            {{$data->anggota->nama}}
-                          </td>
-                          <td>
-                            {{$data->anggota->jk=='anggota'}}
+                            {{$data->nama_talenta}}
                           </td>
                           <td>
                             {{$data->anggota->sts_anggota}}
                           </td>
                           <td>
-                            {{$data->nama_talenta}}
+                            {{$data->anggota->jk}}
                           </td>
+                          
+                          
                           <td>
                             {{$data->anggota->hp}}
                           </td>

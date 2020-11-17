@@ -55,10 +55,10 @@ $(document).ready(function() {
                       <h4 class="card-title">Tambah Talenta</h4>
                       
                         <div class="form-group{{ $errors->has('anggota_id') ? ' has-error' : '' }}">
-                            <label for="anggota_id" class="col-md-4 control-label">anggota</label>
+                            <label for="anggota_id" class="col-md-4 control-label">Anggota</label>
                             <div class="col-md-6">
                                 <div class="input-group">
-                                <input id="anggota_judul" type="text" class="form-control"  required>
+                                <input id="anggota_judul" type="text" class="form-control"  readonly="" required>
                                 <input id="anggota_id" type="hidden" name="anggota_id" value="{{ old('anggota_id') }}" required readonly="">
                                 <span class="input-group-btn">
                                     <button type="button" class="btn btn-success btn-secondary" data-toggle="modal" data-target="#myModal2"><b>Cari</b> <span class="fa fa-search"></span></button>
@@ -73,29 +73,10 @@ $(document).ready(function() {
                             </div>
                         </div>
 &nbsp; 
-                        <div class="form-group{{ $errors->has('istri_id') ? ' has-error' : '' }}">
-                            <label for="istri_id" class="col-md-4 control-label">Istri</label>
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                <input id="istri_judul" type="text" class="form-control"  required>
-                                <input id="istri_id" type="hidden" name="istri_id" value="{{ old('istri_id') }}" required readonly="">
-                                <span class="input-group-btn">
-                                    <button type="button" class="btn btn-success btn-secondary" data-toggle="modal" data-target="#myModal3"><b>Cari</b> <span class="fa fa-search"></span></button>
-                                </span>
-                                </div>
-                                @if ($errors->has('istri_id'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('istri_id') }}</strong>
-                                    </span>
-                                @endif
-                                 
-                            </div>
-                        </div>
-&nbsp; 
                         
                         <div class="form-group{{ $errors->has('nama_talenta') ? ' has-error' : '' }}">
                         
-                              <label for="nama_talenta"  class="col-md-2 control-label">Status Anggota    </label>
+                              <label for="nama_talenta"  class="col-md-2 control-label">Telenta    </label>
                                 <div class="col-md-12" >
                                                  
                                 <label >

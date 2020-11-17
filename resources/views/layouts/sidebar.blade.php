@@ -28,12 +28,7 @@
             </a>
           </li>
          
-           <li class="nav-item {{ setActive(['anggota*']) }}">
-            <a class="nav-link" href="{{route('anggota.index')}}">
-              <i class="menu-icon mdi mdi-account"></i>
-              <span class="menu-title">Anggota</span>
-            </a>
-          </li>
+           
           @if(Auth::user()->level == 'admin')
           <li class="nav-item {{ setActive(['Anggota*', 'acara*', 'user*']) }}">
             <a class="nav-link " data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
@@ -43,16 +38,26 @@
             </a>
             <div class="collapse {{ setShow(['Anggota*', 'acara*', 'user*']) }}" id="ui-basic">
               <ul class="nav flex-column sub-menu">
+                
                 <li class="nav-item">
-                  <a class="nav-link {{ setActive(['Trans_Nikah*']) }}" href="{{route('nikah.index')}}">Data Pernikahan</a>                
+                  <a class="nav-link {{ setActive(['anggota*']) }}" href="{{route('anggota.index')}}">Data Anggota</a>
                 </li>
-                 <li class="nav-item">
+                <li class="nav-item">
+                  <a class="nav-link {{ setActive(['talenta*']) }}" href="{{route('talenta.index')}}">Data Pelayanan</a>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link {{ setActive(['user*']) }}" href="{{route('user.index')}}">Data Pengguna</a>
                 </li>
               </ul>
             </div>
           </li>
           
+          <li class="nav-item {{ setActive(['/export', 'export']) }}"> 
+            <a class="nav-link" href="{{url('/export')}}">
+              <i class="menu-icon mdi mdi-cloud-download"></i>
+              <span class="menu-title">Laporan</span>
+            </a>
+          </li>
            
           @else
           <li class="nav-item {{ setActive(['Anggota*', 'acara*', 'user*']) }}">

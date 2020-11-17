@@ -26,9 +26,9 @@
                       <i class="mdi mdi-chart-line text-success icon-lg"></i>
                     </div>
                     <div class="float-right">
-                      <p class="mb-0 text-right">Kepala Keluarga</p>
+                      <p class="mb-0 text-right">Anggota</p>
                       <div class="fluid-container">
-                        <h3 class="font-weight-medium text-danger mb-0">{{$nikah->count()}}</h3>
+                        <h3 class="font-weight-medium text-danger mb-0">{{$anggota->count()}}</h3>
                       </div>
                     </div>
                   </div>

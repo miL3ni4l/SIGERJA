@@ -38,11 +38,8 @@ class AnggotaController extends Controller
         $gerwils   = Gerwil::get();
         $talentas  = Talenta::get();
         $jabatans   = Jabatan::get();
- 
-        
         $anggotas   = Anggota::get();
-        $datas = Anggota::get();
-         return view('anggota.index',array('anggota' => $anggotas, 'datas' => $datas, 'gerwil' => $gerwils, 'jabatan' => $jabatans, 'talenta' => $talentas));
+         return view('anggota.index',array('anggota' => $anggotas, 'gerwil' => $gerwils, 'jabatan' => $jabatans, 'talenta' => $talentas));
         // return view('anggota.index', compact('datas', 'anggota', 'gerwil'));
     }
 
@@ -108,31 +105,11 @@ class AnggotaController extends Controller
         // }
 
         $this->validate($request, [
-            // 'kode_anggota' => 'required|string|max:255',
             'nama' => 'required|string|max:255',
             'gerwil' => 'required',
-            // 'nij' => 'required|string|max:20|unique:anggota',
-            // 'sts_keluarga' => 'required',
-            // 'jk' => 'required',
-            // 'tempat_lahir' => 'required',
-            // 'tgl_lahir' => 'required',
-            // 'agama' => 'required',
-            // 'alamat' => 'required',
-            // 'hp' => 'required',
-            // 'sts_Anggota' => 'required',
-            // 'gerwil_id' => 'required',
-            // 'jabatan_id' => 'required',
-            // 'talenta_id' => 'required',
         ]);
          
         Anggota::create($request->all());
-    //    $anggota = anggota::create([
-    //             'nama' => $request->get('nama'),
-    //             'nij' => $request->get('nij'),
-    //             'gerwil_id' => $request->get('gerwil_id'),
-    //             'talenta_id' => $request->get('talenta_id'),
-    //             'jabatan_id' => $request->get('jabatan_id')
-    //         ]);
 
         alert()->success('Berhasil.','Data telah ditambahkan!');
         return redirect()->route('anggota.index');

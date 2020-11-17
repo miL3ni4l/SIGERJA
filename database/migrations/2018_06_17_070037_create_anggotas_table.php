@@ -18,33 +18,28 @@ class CreateAnggotasTable extends Migration
             $table->string('kode_anggota');
             // $table->integer('user_id')->unsigned();
             // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            
-            // $table->Integer('gerwil_id')->references('id')->on('gerwils')->onDelete('restrict');
-            // $table->Integer('jabatan_id')->references('id')->on('jabatans')->onDelete('restrict');
-            // $table->Integer('talenta_id')->references('id')->on('talentas')->onDelete('restrict');
-            // $table->integer('nij');
             $table->string('nama'); 
 
            
             //NOT NULL / TIDAK BOLEH KOSONG
             $table->enum('jk', ['Pria', 'Wanita']);
-            $table->string('tempat_lahir');
-            $table->string('kota');
-            $table->string('kelurahan');
-            $table->date('tgl_lahir');
-            $table->string('alamat');
-            $table->enum('gerwil', ['Tengah', 'Timur', 'Barat', 'Selatan', 'Utara'])->nullable();
+            $table->string('tempat_lahir')->nullable();
+            $table->string('kota')->nullable();
+            $table->string('kelurahan')->nullable();
+            $table->date('tgl_lahir')->nullable();
+            $table->string('alamat')->nullable();
+            $table->enum('gerwil', ['Tengah', 'Timur', 'Barat', 'Selatan', 'Utara']);
             $table->enum('agama', ['Kristen', 'Katolik', 'Islam', 'Hindu', 'Buddha', 'KhongHuCu'])->nullable();
             $table->enum('goldar', ['A', 'B', 'AB', 'O', 'RH+', 'RH-'])->nullable();
             $table->string('pekerjaan')->nullable();
             
             //KELUARGA
             //NOT NULL
-            $table->string('pernikahan'); 
+            $table->string('pernikahan')->nullable(); 
             //NULL
             $table->string('ayah')->nullable();
             $table->string('ibu')->nullable();
-            $table->enum('sts_klrg', ['Suami', 'Istri', 'Anak', 'Saudara', 'Lainnya'])->nullable();;
+            $table->enum('sts_klrg', ['Suami', 'Istri', 'Anak', 'Saudara', 'Lainnya'])->nullable();
             $table->string('sts_keluarga')->nullable();
             
             //BAPTIS

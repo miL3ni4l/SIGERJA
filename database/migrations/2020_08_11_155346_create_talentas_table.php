@@ -16,9 +16,7 @@ class CreateTalentasTable extends Migration
         Schema::create('talentas', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('anggota_id')->unsigned();
-            $table->foreign('anggota_id')->references('id')->on('anggota')->onDelete('cascade');
-            $table->integer('istri_id')->unsigned();
-            $table->foreign('istri_id')->references('id')->on('anggota')->onDelete('cascade');
+            $table->foreign('anggota_id')->references('id')->on('anggota')->onDelete('cascade')->onUpdate('cascade');
             // $table->Integer('anggota_id')->references('id')->on('anggotas')->onDelete('restrict');
             $table->string('nama_talenta');
             $table->string('ket');

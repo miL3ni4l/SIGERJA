@@ -19,7 +19,7 @@
             });
 
             $(document).on('click', '.pilih_keluarga1', function (e) {
-                document.getElementById("keluarga1_judul").value = $(this).attr('data-keluarga1_judul');
+                document.getElementById("sts_keluarga").value = $(this).attr('data-sts_keluarga');
                 document.getElementById("sts_keluarga").value = $(this).attr('data-sts_keluarga');
                 $('#myModal4').modal('hide');
             });
@@ -123,11 +123,11 @@
                               <label for="jk" class="col-md-2 control-label">Jenis Kelamin  </label>
                               
                                 <label>
-                                    <input type="radio" name="jk" value="Pria">
+                                    <input type="radio" name="jk" value="Pria" required>
                                     Pria
                                 </label>   &nbsp; &nbsp; &nbsp;
                                 <label>
-                                <input type="radio" name="jk" value="Wanita">
+                                <input type="radio" name="jk" value="Wanita" required>
                                 Wanita
                                 </label>
                         </div>
@@ -246,23 +246,23 @@
                               <label for="gerwil" class="col-md-2 control-label">Gereja Wilayah    :</label>
                               
                                 <label>
-                                    <input type="radio" name="gerwil" value="Tengah">
+                                    <input type="radio" name="gerwil" value="Tengah" required>
                                     Tengah
                                 </label>&nbsp; &nbsp;
                                 <label>
-                                <input type="radio" name="gerwil" value="Timur">
+                                <input type="radio" name="gerwil" value="Timur" required>
                                     Timur
                                 </label>&nbsp; &nbsp;
                                 <label>
-                                <input type="radio" name="gerwil" value="Barat">
+                                <input type="radio" name="gerwil" value="Barat" required>
                                     Barat
                                 </label>&nbsp; &nbsp;
                                 <label>
-                                <input type="radio" name="gerwil" value="Selatan">
+                                <input type="radio" name="gerwil" value="Selatan" required>
                                     Selatan
                                 </label>&nbsp; &nbsp;
                                 <label>
-                                <input type="radio" name="gerwil" value="Utara">
+                                <input type="radio" name="gerwil" value="Utara" required>
                                     Utara
                                 </label>
                         </div>
@@ -296,7 +296,7 @@
                          <div class="form-group{{ $errors->has('tgl_baptis') ? ' has-error' : '' }}">
                             <label for="tgl_baptis" class="col-md-4 control-label">Tanggal Baptis</label>
                             <div class="col-md-7">
-                                <input id="tgl_baptis" type="date" class="form-control" name="tgl_baptis" value="{{ date('Y-m-d', strtotime(Carbon\Carbon::today()->toDateString())) }}" required @if(Auth::user()->level == 'user') readonly @endif>
+                                <input id="tgl_baptis" type="date" class="form-control" name="tgl_baptis" value="{{ date('Y-m-d', strtotime(Carbon\Carbon::today()->toDateString())) }}" @if(Auth::user()->level == 'user') readonly @endif>
                                 @if ($errors->has('tgl_baptis'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('tgl_baptis') }}</strong>
@@ -308,7 +308,7 @@
                         <div class="form-group{{ $errors->has('grj_baptis') ? ' has-error' : '' }}">
                             <label for="grj_baptis" class="col-md-4 control-label">Baptis di Gereja</label>
                             <div class="col-md-7">
-                                <input id="grj_baptis" type="text" class="form-control" name="grj_baptis" value="{{ old('grj_baptis') }}" required>
+                                <input id="grj_baptis" type="text" class="form-control" name="grj_baptis" value="{{ old('grj_baptis') }}" >
                                 @if ($errors->has('grj_baptis'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('grj_baptis') }}</strong>
@@ -320,7 +320,7 @@
                         <div class="form-group{{ $errors->has('pdt_baptis') ? ' has-error' : '' }}">
                             <label for="pdt_baptis" class="col-md-4 control-label">Dilayani oleh Pendeta</label>
                             <div class="col-md-7">
-                                <input id="pdt_baptis" type="text" class="form-control" name="pdt_baptis" value="{{ old('pdt_baptis') }}" required>
+                                <input id="pdt_baptis" type="text" class="form-control" name="pdt_baptis" value="{{ old('pdt_baptis') }}">
                                 @if ($errors->has('pdt_baptis'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('pdt_baptis') }}</strong>
@@ -502,7 +502,7 @@
                         <div class="form-group{{ $errors->has('aktiv_gereja') ? ' has-error' : '' }}" >
                             <label for="aktiv_gereja" class="col-md-4 control-label">Aktivitas di Gereja</label>
                             <div class="col-md-7">
-                                <input id="aktiv_gereja" type="text" class="form-control"   name="aktiv_gereja" value="{{ old('aktiv_gereja') }}" required>
+                                <input id="aktiv_gereja" type="text" class="form-control"   name="aktiv_gereja" value="{{ old('aktiv_gereja') }}" >
                                 @if ($errors->has('aktiv_gereja'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('aktiv_gereja') }}</strong>
@@ -515,7 +515,7 @@
                         <div class="form-group{{ $errors->has('aktiv_masyarakat') ? ' has-error' : '' }}">
                             <label for="aktiv_masyarakat" class="col-md-4 control-label">Aktivitas di Masyarakat</label>
                             <div class="col-md-7">
-                                <input id="aktiv_masyarakat" type="text" class="form-control" name="aktiv_masyarakat" value="{{ old('aktiv_masyarakat') }}" required>
+                                <input id="aktiv_masyarakat" type="text" class="form-control" name="aktiv_masyarakat" value="{{ old('aktiv_masyarakat') }}">
                                 @if ($errors->has('aktiv_masyarakat'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('aktiv_masyarakat') }}</strong>
@@ -528,8 +528,8 @@
                             <label for="sts_keluarga" class="col-md-4 control-label">Silsilah Keluarga (Jika tidak ada isi - )</label>
                             <div class="col-md-7">
                                 <div class="input-group"  >
-                                <input id="sts_keluarga" type="text" class="form-control "   >
-                                <input id="sts_keluarga" type="hidden" multiple="multiple" name="sts_keluarga" value="{{ old('sts_keluarga') }}" required readonly="">
+                                <input id="sts_keluarga" type="text" class="form-control"  readonly=""   >
+                                <input id="sts_keluarga" type="hidden" multiple="multiple" name="sts_keluarga" value="{{ old('sts_keluarga') }}" readonly="">
                                 <span class="input-group-btn">
                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal4"><b>Cari</b> <span class="fa fa-search"></span></button>
                                 </span>
@@ -566,103 +566,7 @@
 
 
  
-  <!-- Modal -->
-<div class="modal fade bd-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
-  <div class="modal-dialog modal-lg" role="document" >
-    <div class="modal-content" style="background: #fff;">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cari Gerakan Wilayah</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-                        <table id="lookup" class="table table-bordered table-hover table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Gerakan Wilayah</th>
-                                     <th>Keterangan</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($gerwils as $data)
-                                <tr class="pilih" data-gerwil_id="<?php echo $data->id; ?>" data-gerwil_judul="<?php echo $data->nama_gerwil; ?>" >
-                                    <td>{{$data->nama_gerwil}}</td>
-                                    <td>{{$data->ket}}</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>  
-                    </div>
-                </div>
-            </div>
-        </div>
-
-  <!-- Modal -->
-<div class="modal fade bd-example-modal-lg" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
-  <div class="modal-dialog modal-lg" role="document" >
-    <div class="modal-content" style="background: #fff;">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cari ayah</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-                        <table id="lookup" class="table table-bordered table-hover table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Anggota</th>
-                                     <th>Keterangan</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($anggotas as $data)
-                        <tr class="pilih_ayah" data-ayah_id="<?php echo $data->id; ?>" data-ayah_judul="<?php echo $data->nama; ?>" >
-                                    <td>{{$data->nama}}</td>
-                                    <td>{{$data->ket}}</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>  
-                    </div>
-                </div>
-            </div>
-        </div>
-
-  <!-- Modal -->
-<div class="modal fade bd-example-modal-lg" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
-  <div class="modal-dialog modal-lg" role="document" >
-    <div class="modal-content" style="background: #fff;">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cari Ibu</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-                        <table id="lookup" class="table table-bordered table-hover table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Anggota</th>
-                                     <th>Keterangan</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($anggotas as $data)
-                        <tr class="pilih_ibu" data-ibu_id="<?php echo $data->id; ?>" data-ibu_judul="<?php echo $data->nama; ?>" >
-                                    <td>{{$data->nama}}</td>
-                                    <td>{{$data->ket}}</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>  
-                    </div>
-                </div>
-            </div>
-        </div>
-
-          <!-- Modal -->
+<!-- Modal -->
 <div class="modal fade bd-example-modal-lg" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
   <div class="modal-dialog modal-lg" role="document" >
     <div class="modal-content" style="background: #fff;">
@@ -682,7 +586,7 @@
                             </thead>
                             <tbody>
                                 @foreach($anggotas as $data)
-                        <tr class="pilih_keluarga1" data-sts_keluarga="<?php echo $data->id; ?>" data-keluarga1_judul="<?php echo $data->nama; ?>" >
+                        <tr class="pilih_keluarga1" data-sts_keluarga="<?php echo $data->nama; ?>" data-sts_keluarga="<?php echo $data->nama; ?>" >
                                     <td>{{$data->nama}}</td>
                                     <td>{{$data->sts_anggota}}</td>
                                 </tr>

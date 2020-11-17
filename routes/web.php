@@ -36,6 +36,7 @@ Route::resource('talenta', 'TalentaController');
 Route::resource('nikah', 'NikahController');
 Route::resource('jabatan', 'JabatanController');
 
+Route::resource('export', 'ExportController');
 Route::resource('acara', 'AcaraController');
 Route::resource('bank', 'BankController');
 Route::get('/format_acara', 'AcaraController@format');
